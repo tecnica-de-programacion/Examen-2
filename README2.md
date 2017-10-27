@@ -1,4 +1,4 @@
-TU-NOBRE-AQUI - Examen 2 - Pizarra Magica
+Hernández Castro Carlos Alexis - Examen 2 - Pizarra Magica
 ======
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
