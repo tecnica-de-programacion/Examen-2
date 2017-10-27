@@ -27,6 +27,8 @@ Examen 2 - Pizarra Magica
 |____Models # Carpeta con todos los modelos
 |____Views # Carpeta con todas las vistas
 |____Assets # Carpeta con todos los assets
+|____Arduino # Carpeta con todos los archivos de arduion
+
 ```
 
 ## Evaluacion
