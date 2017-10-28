@@ -41,6 +41,7 @@ class MainView(Tk):
         self.maxsize(self.Constants.width, self.Constants.height)
         self.minsize(self.Constants.width, self.Constants.height)
         self.config(bg = self.Constants.color_bg)
+        self.__line = True
 
         self.__canvas = Canvas(self, width = self.Constants.width_sketch, height = self.Constants.height_sketch)
 
@@ -75,6 +76,11 @@ class MainView(Tk):
         self.__label = Label(self, text = self.Constants.text_label, bg = self.Constants.color_label)
         self.__label.grid(row = 0,  column = 0)
 
+        self.bind("<space>", self.__delate_stroke)
+
+    def __delate_stroke(self, event):
+        self.__canvas.delete("all")
+
     def __get_black_color(self, event):
         self.Constants.new_color = self.Constants.black
         self.update_line
@@ -92,8 +98,7 @@ class MainView(Tk):
         self.update_line
 
     def update_line(self, horizontal, vertical):
-        #print(horizontal, vertical)
-        self.__canvas.create_line(self.Constants.new_x_start, self.Constants.new_y_start, horizontal, self.Constants.y_start - vertical, fill = self.Constants.new_color)
+        self.__line = self.__canvas.create_line(self.Constants.new_x_start, self.Constants.new_y_start, horizontal, self.Constants.y_start - vertical, fill = self.Constants.new_color)
         self.Constants.new_x_start = horizontal
         self.Constants.new_y_start = self.Constants.y_start - vertical
 
