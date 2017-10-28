@@ -15,12 +15,12 @@ class MainView(Tk):
         position_blue_button = 500
         center = N + S + E + W
         text_label = "Colores:"
-        color_label = "#858DA4"
+        color_label = "#CA9494"
         black = "black"
         red = "red"
         green = "green"
         blue = "blue"
-        color_bg = "#858DA4"
+        color_bg = "#A90000"
 
 
         @classmethod
