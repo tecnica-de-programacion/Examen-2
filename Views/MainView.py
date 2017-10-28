@@ -33,3 +33,5 @@ class MainView(Tk):
         self.__magic_board = Canvas(self, width=600, height=500, bg=self.Constants.magic_board_color)
         self.__magic_board.grid(row=1, column=0)
 
+        self.__magic_board.create_line(0,500,10,490)
+
