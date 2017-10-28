@@ -25,6 +25,8 @@ class MainView(Tk):
         y_start = 500
         new_x_start = 0
         new_y_start = 500
+        event = "<Button-1>"
+        new_color = "black"
 
 
         @classmethod
@@ -56,24 +58,42 @@ class MainView(Tk):
 
         self.__black_button = Button(self, bg = self.Constants.black, width = self.Constants.width_button, height = self.Constants.height_button)
         self.__black_button.place(x = self.Constants.position_black_button)
+        self.__black_button.bind(self.Constants.event, self.__get_black_color)
 
         self.__red_button = Button(self, bg = self.Constants.red, width = self.Constants.width_button, height = self.Constants.height_button)
         self.__red_button.place(x = self.Constants.position_red_button)
+        self.__red_button.bind(self.Constants.event, self.__get_red_color)
 
         self.__green_button = Button(self, bg = self.Constants.green, width = self.Constants.width_button, height = self.Constants.height_button)
         self.__green_button.place(x = self.Constants.position_green_button)
+        self.__green_button.bind(self.Constants.event, self.__get_green_color)
 
         self.__blue_button = Button(self, bg = self.Constants.blue, width = self.Constants.width_button, height = self.Constants.height_button)
         self.__blue_button.place(x = self.Constants.position_blue_button)
+        self.__blue_button.bind(self.Constants.event, self.__get_blue_color)
 
         self.__label = Label(self, text = self.Constants.text_label, bg = self.Constants.color_label)
         self.__label.grid(row = 0,  column = 0)
 
+    def __get_black_color(self, event):
+        self.Constants.new_color = self.Constants.black
+        self.update_line
 
+    def __get_red_color(self, event):
+        self.Constants.new_color = self.Constants.red
+        self.update_line
+
+    def __get_green_color(self, event):
+        self.Constants.new_color = self.Constants.green
+        self.update_line
+
+    def __get_blue_color(self, event):
+        self.Constants.new_color = self.Constants.blue
+        self.update_line
 
     def update_line(self, horizontal, vertical):
-        print(horizontal, vertical)
-        self.__canvas.create_line(self.Constants.new_x_start, self.Constants.new_y_start, horizontal, self.Constants.y_start - vertical, fill = "black")
+        #print(horizontal, vertical)
+        self.__canvas.create_line(self.Constants.new_x_start, self.Constants.new_y_start, horizontal, self.Constants.y_start - vertical, fill = self.Constants.new_color)
         self.Constants.new_x_start = horizontal
         self.Constants.new_y_start = self.Constants.y_start - vertical
 
