@@ -9,17 +9,18 @@ class MainView(Tk):
         width_sketch = 600
         width_button = 5
         height_button = 2
-        position_black_button = N + W
-        position_red_button = N + E
-        position_green_button = W
-        position_blue_button = E
+        position_black_button = 200
+        position_red_button = 300
+        position_green_button = 400
+        position_blue_button = 500
         center = N + S + E + W
-        color_text = "Colors:"
+        text_label = "Colores:"
+        color_label = "#858DA4"
         black = "black"
         red = "red"
         green = "green"
         blue = "blue"
-        color_bg = "#DA5D16"
+        color_bg = "#858DA4"
 
 
         @classmethod
@@ -50,17 +51,17 @@ class MainView(Tk):
         self.rowconfigure(2, minsize=int((self.Constants.height - self.Constants.height_sketch) / 2))
 
         self.__black_button = Button(self, bg = self.Constants.black, width = self.Constants.width_button, height = self.Constants.height_button)
-        self.__black_button.grid(row = 1, column = 0, sticky = self.Constants.position_black_button )
+        self.__black_button.place(x = self.Constants.position_black_button)
 
         self.__red_button = Button(self, bg = self.Constants.red, width = self.Constants.width_button, height = self.Constants.height_button)
-        self.__red_button.grid(row=1, column=0, sticky = self.Constants.position_red_button)
+        self.__red_button.place(x = self.Constants.position_red_button)
 
         self.__green_button = Button(self, bg = self.Constants.green, width = self.Constants.width_button, height = self.Constants.height_button)
-        self.__green_button.grid(row=1, column=0, sticky = self.Constants.position_green_button)
+        self.__green_button.place(x = self.Constants.position_green_button)
 
         self.__blue_button = Button(self, bg = self.Constants.blue, width = self.Constants.width_button, height = self.Constants.height_button)
-        self.__blue_button.grid(row=1, column=0, sticky = self.Constants.position_blue_button)
+        self.__blue_button.place(x = self.Constants.position_blue_button)
 
-        self.__label = Label(self, text = self.Constants.color_text, bg = self.Constants.color_bg)
+        self.__label = Label(self, text = self.Constants.text_label, bg = self.Constants.color_label)
         self.__label.grid(row = 0,  column = 0)
 
