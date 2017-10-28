@@ -1,5 +1,5 @@
 from Views.MainViews import MainView
-#from Models.HandleData import HandleData
+from Models.HandleData import HandleData
 import serial
 from serial.tools import list_ports
 import threading
@@ -15,6 +15,7 @@ class MainApp():
             print(port.device, port.name, port.description)
 
         self.__master = MainView()
+        self.__data = HandleData()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.__update_sketch()
@@ -24,9 +25,13 @@ class MainApp():
         self.__master.mainloop()
 
     def __update_sketch(self):
-        data = self.__arduino.readline().decode()
-        print(data)
-        #self.__handle_data(data)
+        data_arduino = self.__arduino.readline().decode()
+        data = self.__data.clean_data(data_arduino)
+        try:
+            self.__master.update_line(int(data[0]), int(data[1]))
+        except:
+            pass
+
         self.__master.after(1, self.__update_sketch)
 
     def __on_closing(self):
