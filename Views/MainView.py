@@ -23,7 +23,6 @@ class MainView(Tk):
         self.title('Pizarra Mágica')
         self.geometry(self.Constants.size())
         self.minsize(width=self.Constants.width, height=self.Constants.height)
-        self.maxsize(width=self.Constants.width, height=self.Constants.height)
 
         self.configure(bg=self.Constants.border_color)
 
@@ -33,5 +32,12 @@ class MainView(Tk):
         self.__magic_board = Canvas(self, width=600, height=500, bg=self.Constants.magic_board_color)
         self.__magic_board.grid(row=1, column=0)
 
-        self.__magic_board.create_line(0,500,10,490)
+        self.__drawing = None
+
+    def update_drawing(self, coordinates):
+        print(coordinates.actual_x_coordinate, coordinates.actual_y_coordinate,
+              coordinates.modify_x_coordinate, coordinates.modify_y_coordinate)
+
+        self.__magic_board.create_line(coordinates.actual_x_coordinate, 500-coordinates.actual_y_coordinate,
+                                       coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate)
 
