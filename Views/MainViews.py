@@ -21,6 +21,10 @@ class MainView(Tk):
         green = "green"
         blue = "blue"
         color_bg = "#A90000"
+        x_start = 0
+        y_start = 500
+        new_x_start = 0
+        new_y_start = 500
 
 
         @classmethod
@@ -64,4 +68,12 @@ class MainView(Tk):
 
         self.__label = Label(self, text = self.Constants.text_label, bg = self.Constants.color_label)
         self.__label.grid(row = 0,  column = 0)
+
+
+
+    def update_line(self, horizontal, vertical):
+        print(horizontal, vertical)
+        self.__canvas.create_line(self.Constants.new_x_start, self.Constants.new_y_start, horizontal, self.Constants.y_start - vertical, fill = "black")
+        self.Constants.new_x_start = horizontal
+        self.Constants.new_y_start = self.Constants.y_start - vertical
 
