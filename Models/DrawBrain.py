@@ -1,5 +1,3 @@
-
-
 class DrawBrain:
     class Constants:
         heigth = 500

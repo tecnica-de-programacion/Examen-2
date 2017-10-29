@@ -40,7 +40,7 @@ class MainApp ():
             else:
                 self.__brain.start(vertical_value, horizontal_value)
                 self.__initial_position = True
-        self.__master.update_position('Posición: '+ str(clean_values))
+            self.__master.update_position('Posición: '+ str(horizontal_value) + ',' + str(clean_values[0]))
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
