@@ -36,20 +36,21 @@ class MainView(Tk):
         #self.__canvas.grid(row = 0, column = 0)
         self.__canvas.place(x=0,y=0)
 
-    def update_pointer(self,data):
-        coordinates_tupla = self.__controller.handle_data(data)
-        x = coordinates_tupla[0]
-        y =coordinates_tupla[1]
-        self.__canvas.create_oval(x-self.Constants.radio,y-self.Constants.radio,x+self.Constants.radio,y+self.Constants.radio,fill = "red" )
 
-    def create_line(self,last_x,last_y,data):
+
+
+    def draw_figure(self,last_x,last_y,data,figure):
         coordinates_tupla =self.__controller.handle_data(data)
         x = coordinates_tupla[0]
         y = coordinates_tupla[1]
-        if abs(int(x) - int(last_x)) > 1 or abs(int(y) - int(last_y)) > 1:
-            self.__canvas.create_line(last_x,last_y,x,y)
-            return coordinates_tupla
-        return None
+        if figure == "lines":
+            if abs(int(x) - int(last_x)) > 5 or abs(int(y) - int(last_y)) > 5:
+                self.__canvas.create_line(last_x,last_y,x,y)
+                return coordinates_tupla
+        else:
+            self.__canvas.create_oval(x - self.Constants.radio, y - self.Constants.radio, x + self.Constants.radio,
+                                      y + self.Constants.radio, fill="red")
+            return None
 
 
 

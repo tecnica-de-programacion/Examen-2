@@ -42,13 +42,13 @@ class MainApp():
 
 
     def create_figure(self,data):
-        if self.figure == "lines":
-            new_coordenates = self.__master.create_line(self.__last_x, self.__last_y, data)
-            if new_coordenates != None:
-                self.__last_x = new_coordenates[0]
-                self.__last_y = new_coordenates[1]
-        else:
-            self.__master.update_pointer(data)
+        new_coordenates = self.__master.draw_figure(self.__last_x, self.__last_y, data, self.figure)
+        self.figure = "lines"
+        if new_coordenates != None:
+            self.__last_x = new_coordenates[0]
+            self.__last_y = new_coordenates[1]
+
+
 
     def __draw(self):
         coordinates = self.generate_data()
