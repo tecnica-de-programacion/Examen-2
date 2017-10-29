@@ -1,4 +1,4 @@
-TU-NOBRE-AQUI - Examen 2 - Pizarra Magica
+LAURA REYNOSA MONTOYA - Examen 2 - Pizarra Magica
 ======
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
