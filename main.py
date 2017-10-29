@@ -17,13 +17,18 @@ class MainApp():
         self.__controler = MainModel()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
+        self.first_lecture = self.generate_data()
+        self.__last_x = self.first_lecture[0]
+        self.__last_y = self.first_lecture[1]
+        self.figure = "lines"
         self.__draw()
+
 
     def run(self):
         self.__master.mainloop()
 
+
     def __on_closing(self):
-        self.__star_draw = False
         self.__arduino.close()
         self.__master.destroy()
 
@@ -36,12 +41,20 @@ class MainApp():
         return None
 
 
-    def create_point(self,data):
-        self.__master.update_pointer(data)
+    def create_figure(self,data):
+        if self.figure == "lines":
+            new_coordenates = self.__master.create_line(self.__last_x, self.__last_y, data)
+            if new_coordenates != None:
+                self.__last_x = new_coordenates[0]
+                self.__last_y = new_coordenates[1]
+        else:
+            self.__master.update_pointer(data)
 
     def __draw(self):
-        self.create_point(self.generate_data())
+        coordinates = self.generate_data()
+        self.create_figure(coordinates)
         self.__master.after(20,self.__draw)
+
 
 
 

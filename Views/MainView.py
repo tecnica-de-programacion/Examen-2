@@ -42,7 +42,14 @@ class MainView(Tk):
         y =coordinates_tupla[1]
         self.__canvas.create_oval(x-self.Constants.radio,y-self.Constants.radio,x+self.Constants.radio,y+self.Constants.radio,fill = "red" )
 
-
+    def create_line(self,last_x,last_y,data):
+        coordinates_tupla =self.__controller.handle_data(data)
+        x = coordinates_tupla[0]
+        y = coordinates_tupla[1]
+        if abs(int(x) - int(last_x)) > 1 or abs(int(y) - int(last_y)) > 1:
+            self.__canvas.create_line(last_x,last_y,x,y)
+            return coordinates_tupla
+        return None
 
 
 
