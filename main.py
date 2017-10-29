@@ -24,8 +24,8 @@ class MainApp():
         clean_values = data.strip(' \n\r').split(",")
         line_vertical = int(clean_values[1])
         line_horizontal = int(clean_values[0])
-        print(line_horizontal)
-        print(line_vertical)
+        self.__master.create_drawing(line_vertical, line_horizontal)
+
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()

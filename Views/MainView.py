@@ -20,28 +20,24 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.minsize(self.Constants.width_outside, self.Constants.heigth_outside)
         self.maxsize(self.Constants.width_outside,self.Constants.heigth_outside)
+        self.lines = None
+        self.canvas = Canvas(self, width = self.Constants.width_inside,height =self.Constants.height_inside)
+        self.canvas.grid(row= 0, column = 0, sticky = N+S+E+W)
+        self.grid_rowconfigure(0, weight=True)
+        self.grid_columnconfigure(1, weight=True)
+        self.position_x = 0
+        self.position_y = 0
+        self.create_main_window_drawing()
 
-        #acomodo los botones
-        self.__order_button()
-        self.__configure_buttons()
 
-    def __order_button(self):
-        self.grid_rowconfigure(0, weight = True)
-        self.grid_rowconfigure(0, weight = True)
-        self.grid_rowconfigure(0, weight = True)
-        self.grid_columnconfigure(0, minsize = self.Constants.width_button)
-        self.grid_columnconfigure(1, minsize = self.Constants.width_button)
-        self.grid_columnconfigure(2, minsize = self.Constants.width_button)
-
-    def __configure_buttons(self):
-        color_black = Label(self)
-        color_black.grid(row = 0, column = 0, sticky = N)
-        color_black.configure(text = "NEGRO")
-
-        color_green = Label(self)
-        color_green.grid(row = 0, column = 2, sticky = N)
-        color_green.configure(text = "GREEN")
-        color_blue = Label(self)
+    def create_drawing(self, vertical, horizontal):
+        if self.lines is not None:
+            self.canvas.delete(self.lines)
+        self.lines = self.canvas.create_line(300-horizontal, 300, 300-vertical,300)
+        self.position_y =  self.canvas.coords(self.lines)
+        print(self.position_y)
+    def create_main_window_drawing(self):
+        self.canvas.create_rectangle(100,100,700,600,fill = "red")
 
 
 
