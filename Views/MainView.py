@@ -29,10 +29,9 @@ class MainView(Tk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
 
-        self.__magic_board = Canvas(self, width=600, height=500, bg=self.Constants.magic_board_color)
-        self.__magic_board.grid(row=1, column=0)
+        self.drawing_canvas_setup()
 
-        self.__drawing = None
+
 
     def update_drawing(self, coordinates):
         print(coordinates.actual_x_coordinate, coordinates.actual_y_coordinate,
@@ -41,3 +40,11 @@ class MainView(Tk):
         self.__magic_board.create_line(coordinates.actual_x_coordinate, 500-coordinates.actual_y_coordinate,
                                        coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate)
 
+    def reset_drawing(self):
+        print('Reseting drawing canvas')
+        self.__magic_board.destroy()
+        self.drawing_canvas_setup()
+
+    def drawing_canvas_setup(self):
+        self.__magic_board = Canvas(self, width=600, height=500, bg=self.Constants.magic_board_color)
+        self.__magic_board.grid(row=1, column=0)

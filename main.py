@@ -27,13 +27,12 @@ class MainApp():
         self.__master.update_drawing(coordinates)
 
     def reset_coordinates(self):
-        print('I am the reset handler')
+        self.__master.reset_drawing()
 
     def on_coordinates_change(self, coordinates):
         self.update_coordintes(coordinates)
 
     def on_space_clicked(self, event):
-        print('Space bar was clicked')
         self.__coordinates.reset_values()
 
 
