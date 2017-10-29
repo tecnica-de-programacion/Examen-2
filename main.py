@@ -16,9 +16,9 @@ class MainApp():
         self.__master.mainloop()
 
     def __did_button_tap(self, color):
-        self.__color = color
+        self.__master.ChangeColor.line_color = color
 
-    def __did_space_tap(self, event):
+    def __did_space_tap(self):
         self.__master.clean_screen()
 
     def __update_coordinate(self):

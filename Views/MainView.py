@@ -9,6 +9,7 @@ class MainView(Tk):
         width = 900
         height = 650
         left_width = 100
+        line_width = 2
         bg = '#8f0595'
         event_space = '<space>'
         buttons_width = 750
@@ -24,6 +25,9 @@ class MainView(Tk):
         @classmethod
         def size(cls):
             return '{}x{}'.format(cls.width, cls.height)
+
+    class ChangeColor:
+        line_color = "#000000"
 
     def __init__(self, tap_button_handler = None, tap_space_handler = None):
         super().__init__()
@@ -57,11 +61,11 @@ class MainView(Tk):
 
     def __did_space_tap(self, space):
         if self.__tap_space_handler is None: return
-        self.__tap_space_handler(space)
+        self.__tap_space_handler()
 
     def update_canvas(self, x, y):
         if self.__coordinates:
-            self.__canvas.create_line(self.__coordinates[-2], self.__coordinates[-1], x, y, width = 2)
+            self.__canvas.create_line(self.__coordinates[-2], self.__coordinates[-1], x, y, width = self.Constants.line_width, fill = self.ChangeColor.line_color)
         self.__coordinates.append(x)
         self.__coordinates.append(y)
         self.bind(self.Constants.event_space, self.__did_space_tap)
