@@ -27,6 +27,7 @@ class MainView(Tk):
         new_y_start = 500
         event = "<Button-1>"
         new_color = "black"
+        delete_text = "Barra espaciadora para borrar"
 
 
         @classmethod
@@ -75,6 +76,9 @@ class MainView(Tk):
 
         self.__label = Label(self, text = self.Constants.text_label, bg = self.Constants.color_label)
         self.__label.grid(row = 0,  column = 0)
+
+        self.__delete_text = Label(self, text = self.Constants.delete_text, bg = self.Constants.color_label)
+        self.__delete_text.grid(row = 2, column = 1)
 
         self.bind("<space>", self.__delate_stroke)
 
