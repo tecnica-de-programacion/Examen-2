@@ -20,7 +20,8 @@ void sendData(int value1, int value2){
   Serial.print(value1);
   Serial.print(",");
   Serial.print(mapValue1);
+  Serial.print(",");
   Serial.print(value2);
   Serial.print(",");
-  Serial.print(mapValue2);    
+  Serial.println(mapValue2);    
 }

@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Canvas, N, S, E, W
+from tkinter import Tk, Canvas, N, S, E, W
 from Views.ColorButton import ColorButton
 
 class MainView(Tk):

@@ -17,5 +17,7 @@ class ColorButton(Label):
         self.configure(foreground = self.Constants.foreground)
         self.configure(font = (self.Constants.font_family, self.Constants.font_size))
 
+        #self.bind(self.Events.click, self.__color_clicked)
+
     def position(self, row, column):
         self.grid(row = row, column = column, sticky = self.Constants.center)

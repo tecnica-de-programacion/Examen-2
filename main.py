@@ -28,8 +28,6 @@ class MainApp():
         clean_values = data.strip(" \n\r").split(",")
         print(clean_values)
 
-
-
 if __name__ == '__main__':
     app = MainApp()
     app.run()
