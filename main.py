@@ -26,13 +26,13 @@ class MainApp():
             position_value = int(clean_values[2])
             value_text = clean_values[1]
             axis = clean_values[0]
+            print(axis,position_value,value_text)
 
         elif clean_values[0] == "Vertical":
             position_value = int(clean_values[2])
             value_text = clean_values[1]
             axis = clean_values[0]
-
-
+            print(axis, position_value, value_text)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()

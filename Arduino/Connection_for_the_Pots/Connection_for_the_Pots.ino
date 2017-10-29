@@ -16,7 +16,7 @@ void loop() {
 }
 
 void sendDataHorizontal(int value) {
-  mapValue = map(value, 0, 1023, 0, 400);
+  mapValue = map(value, 0, 1023, 0, 500);
   Serial.print("Horizontal");
   Serial.print(",");
   Serial.print(value);
@@ -25,7 +25,7 @@ void sendDataHorizontal(int value) {
 }
 
 void sendDataVertical(int value) {
-  mapValue = map(value, 0, 1023, 0, 400);
+  mapValue = map(value, 0, 1023, 0, 600);
   Serial.print("Vertical");
   Serial.print(",");
   Serial.print(value);
