@@ -1,5 +1,5 @@
 int Pot_horizontal = A1;
-int Pot_vertical = A2;
+int Pot_vertical = A4;
 int potValue = 0;
 int mapValue_horizontal = 0;
 int mapValue_vertical = 0;
