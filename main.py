@@ -43,7 +43,7 @@ class MainApp():
 
     def create_figure(self,data):
         new_coordenates = self.__master.draw_figure(self.__last_x, self.__last_y, data, self.figure)
-        self.figure = "lines"
+        self.figure = "lines" # sse debe quitar
         if new_coordenates != None:
             self.__last_x = new_coordenates[0]
             self.__last_y = new_coordenates[1]
