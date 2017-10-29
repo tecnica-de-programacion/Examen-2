@@ -1,15 +1,33 @@
 from Views.MainView import MainView
+import serial
 
 class MainApp():
+    class Constants:
+        port = 'COM3'
+        baud = 115200
+        close_event = "WM_DELETE_WINDOW"
+
     def __init__(self):
-        self.__master = MainView(tap_handler = self.__did_tap)
+        self.__master = MainView(tap_button_handler = self.__did_button_tap)
+        self.__port = serial.Serial(self.Constants.port, self.Constants.baud)
+        self.__update_coordinate()
 
     def run(self):
         self.__master.mainloop()
 
-    def __did_tap(self, color):
-        #print(color)
-        pass
+    def __did_button_tap(self, color):
+        self.__color = color
+
+    def __update_coordinate(self):
+        coordinates = self.__port.readline().decode()
+        self.__handle_coordinate(coordinates)
+        self.__master.after(5, self.__update_coordinate)
+
+    def __handle_coordinate(self, coordinate):
+        clean_values = coordinate.strip(' \n\r').split(",")
+        coordinate_y = int(clean_values[1])
+        coordinate_x = int(clean_values[3])
+        self.__master.update_canvas(coordinate_x, coordinate_y)
 
 
 if __name__ == '__main__':

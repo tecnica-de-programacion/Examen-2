@@ -25,14 +25,15 @@ class MainView(Tk):
         def size(cls):
             return '{}x{}'.format(cls.width, cls.height)
 
-    def __init__(self, tap_handler = None):
+    def __init__(self, tap_button_handler = None):
         super().__init__()
-        self.__tap_handler = tap_handler
+        self.__tap_button_handler = tap_button_handler
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
         self.minsize(self.Constants.width, self.Constants.height)
         self.maxsize(self.Constants.width, self.Constants.height)
         self.config(bg = self.Constants.bg)
+        self.__coordinates = []
         self.__configure_ui()
 
     def __configure_ui(self):
@@ -41,15 +42,23 @@ class MainView(Tk):
         self.__canvas.place(x=self.Constants.left_width,
                             y=(self.Constants.height - self.Constants.drawing_screen_height) / 2)
         self.__black_button = ColorButton(self, self.Constants.buttons_width, self.Constants.black_button_y,
-                                          self.Constants.Black, action=self.__did_tap)
+                                          self.Constants.Black, action=self.__did_button_tap)
         self.__red_button = ColorButton(self, self.Constants.buttons_width, self.Constants.red_button_y,
-                                        self.Constants.Red, action=self.__did_tap)
+                                        self.Constants.Red, action=self.__did_button_tap)
         self.__blue_button = ColorButton(self, self.Constants.buttons_width, self.Constants.blue_button_y,
-                                         self.Constants.Blue, action=self.__did_tap)
+                                         self.Constants.Blue, action=self.__did_button_tap)
         self.__green_button = ColorButton(self, self.Constants.buttons_width, self.Constants.green_button_y,
-                                          self.Constants.Green, action=self.__did_tap)
+                                          self.Constants.Green, action=self.__did_button_tap)
 
-    def __did_tap(self, event):
-        if self.__tap_handler is None: return
-        self.__tap_handler(event)
+    def __did_button_tap(self, color):
+        if self.__tap_button_handler is None: return
+        self.__tap_button_handler(color)
+
+    def update_canvas(self, x, y):
+        if self.__coordinates:
+            self.__canvas.create_line(self.__coordinates[-2], self.__coordinates[-1], x, y, width = 2)
+        self.__coordinates.append(x)
+        self.__coordinates.append(y)
+
+
 
