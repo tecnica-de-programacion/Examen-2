@@ -1,35 +1,51 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W
+from tkinter import Tk, Canvas, Label, N, S, E, W, Frame
+from Models.Brain import MainModel
 
 
 class MainView(Tk):
     class Constants:
         title = "Pizarra Mágica"
         width = 900
-        heigth = 700
-        heigth_pizarra = 500
-        width_pizarra = 600
+        height = 700
+        height_pizarra = 600
+        width_pizarra = 500
         center = N + S + E + W
 
 
         @classmethod
         def size(cls):
-            return "{}x{}".format(cls.width, cls.heigth)
+            return "{}x{}".format(cls.width, cls.height)
 
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
 
-        self.__rectangle = None
-        self.__label = Label(self)
-        self.__canvas = Canvas(self, width=self.Constants.width / 2, height=self.Constants.heigth)
+        self.__frame = Frame(self)
+        self.__frame.grid(column = 0, row = 0)
 
-        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
-        self.__label.grid(row=0, column=1, sticky=self.Constants.center)
+        self.configure(background = 'blue')
 
-        self.grid_rowconfigure(0, weight=True)
-        self.grid_columnconfigure(0, weight=True)
-        self.grid_columnconfigure(1, weight=True, minsize=self.Constants.width / 2)
+        self.__controller = MainModel()
+        self.maxsize(self.Constants.width,self.Constants.height)
+        self.minsize(self.Constants.width, self.Constants.height)
+        self.__canvas = Canvas(self.__frame, width = self.Constants.width_pizarra, height = self.Constants.height_pizarra)
+        self.__canvas.grid(column = 0, row = 0, columnspan = 1, rowspan = 2, sticky = self.Constants.center)
+        # self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__canvas.create_rectangle(0, 0, self.Constants.width_pizarra, self.Constants.height_pizarra, fill = 'blue')
+        self.__label = Label(self.__frame, text = 'COLORES')
 
-    def draw (self, last_x, last_y, data):
-        pass
+        self.__label.grid(row=0, column=3, sticky = self.Constants.center)
+        self.__label.grid(row=0, column=3, sticky = N + E)
+        self.grid_rowconfigure(0, weight = True)
+        #self.grid_rowconfigure(0, weight = 1)
+        self.grid_columnconfigure(0, weight = True)
+        #self.grid_columnconfigure(0, weight = 1)
+
+    def __draw_line (self, initial_x, initial_y, data):
+        vector = self.__controller.handle_data(data)
+        x = vector[0]
+        y = vector[1]
+        if abs(x - int(last_x)) > 5 or abs(y - int(last_y)) > 5:
+            self.__canvas.create_line(initial_x, initial_y, x, y)
+            return vector

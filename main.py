@@ -16,20 +16,19 @@ class MainApp():
         self.__master = MainView()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
-        self.__update_clock()
+        self.__draw()
 
     def run(self):
         self.__master.mainloop()
 
     def __create_figure(self, data):
-        final_point = self.__master.__draw(self.last_x, self.last_y, data)
-        if final_point == None:
-            self.__last_x = final_point[0]
-            self.__last_y = final_point[1]
+        final_point = self.__master.__draw_line(self.__last_x, self.__last_y, data)
+        self.__last_x = final_point[0]
+        self.__last_y = final_point[1]
 
     def __draw(self):
-        coordenates = self.__arduino.readline().decode()
-        self.__create_figure(coordenates)
+        coordinates = self.__arduino.readline().decode()
+        self.__create_figure(coordinates)
         self.__master.after(10,self.__draw())
 
     def __on_closing(self):
