@@ -21,19 +21,16 @@ class MainApp():
     def run(self):
         self.__master.mainloop()
 
-    def __handle_data(self, data):
-        clean_values = data.strip(' \n\r').split(",")
-        bar_value = int(clean_values[1])
-        value_text = clean_values[0]
+    def __create_figure(self, data):
+        final_point = self.__master.__draw(self.last_x, self.last_y, data)
+        if final_point == None:
+            self.__last_x = final_point[0]
+            self.__last_y = final_point[1]
 
-        self.__master.update_bar(bar_value)
-        self.__master.update_text(value_text)
-
-
-    def __update_clock(self):
-        data = self.__arduino.readline().decode()
-        self.__handle_data(data)
-        self.__master.after(1, self.__update_clock)
+    def __draw(self):
+        coordenates = self.__arduino.readline().decode()
+        self.__create_figure(coordenates)
+        self.__master.after(10,self.__draw())
 
     def __on_closing(self):
         self.__arduino.close()
