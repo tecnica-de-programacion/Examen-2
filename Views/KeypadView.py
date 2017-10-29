@@ -13,9 +13,6 @@ class KeypadView():
         blue_button = ButtonPrototype(master, "Blue", "#2980B9", action = self.__did_tap)
         blue_button.position(3, 3)
 
-    def __get_color_updated(self):
-        pass
-
     def __did_tap(self, sender):
         if self.__tap_button_handler is None: return
         self.__tap_button_handler(sender)

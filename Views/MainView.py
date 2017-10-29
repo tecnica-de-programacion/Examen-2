@@ -9,7 +9,7 @@ class MainView(Tk):
     class Constants:
         title = "Magic Board"
         window_height = 680
-        window_width = 700
+        window_width = 605
         white_board_height = 500
         white_board_width = 600
         center = N + S + E + W
@@ -40,7 +40,7 @@ class MainView(Tk):
     def __configure_grid(self):
         self.grid_rowconfigure(0, minsize = TitleLabel.Constants.size)
         self.grid_rowconfigure(1, minsize = self.Constants.white_board_height)
-        self.grid_rowconfigure(2, minsize = self.Constants.window_height - self.Constants.white_board_height - 150)
+        self.grid_rowconfigure(2, minsize = self.Constants.window_height - self.Constants.white_board_height - 160)
         for column_index in range(4):
             self.grid_columnconfigure(column_index, minsize = self.Constants.window_width / 4)
 
