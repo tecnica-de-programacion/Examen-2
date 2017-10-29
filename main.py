@@ -1,6 +1,5 @@
 from Views.MainView import MainView
 import serial
-from serial.tools import list_ports
 from Models.InteractiveCanvasBrain import InteractiveCanvasBrain
 
 class MainApp():
@@ -10,9 +9,6 @@ class MainApp():
         close_event = "WM_DELETE_WINDOW"
 
     def __init__(self):
-        for port in list_ports.comports(include_links=True):
-            print(port.device, port.name, port.description)
-
         self.__master = MainView()
         self.__magic_board = InteractiveCanvasBrain()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)

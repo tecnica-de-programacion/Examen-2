@@ -7,7 +7,7 @@ from Views.KeypadView import KeypadView
 class MainView(Tk):
 
     class Constants:
-        title = "Pizarra Magica"
+        title = "Magic Board"
         window_height = 680
         window_width = 700
         white_board_height = 500
@@ -53,8 +53,6 @@ class MainView(Tk):
 
     def __color_tapped(self, color):
         self.__color = color
-        print("MainViewLvel")
-        print(self.__color)
 
     def __get_color(self):
         return self.__color
