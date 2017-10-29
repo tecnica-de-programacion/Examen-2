@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, N, S, E, W
+from tkinter import *
 from Views.ColorButton import ColorButton
 
 class MainView(Tk):
@@ -21,6 +21,8 @@ class MainView(Tk):
         self.maxsize(self.Constants.width, self.Constants.height)
         self.__configure_ui()
         self.__configure_grid()
+
+        self.bind("<space>", self.clean)
 
     def __configure_grid(self):
         self.grid_rowconfigure(0, weight = True)
@@ -45,4 +47,7 @@ class MainView(Tk):
 
     def update_line(self, horizontal, vertical):
         self.__canvas.create_line(horizontal, vertical, horizontal + 1, vertical + 1, fill = 'black')
+
+    def clean(self, event):
+        self.__canvas.delete(ALL)
 
