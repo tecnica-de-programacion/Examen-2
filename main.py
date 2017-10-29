@@ -8,10 +8,10 @@ class MainApp:
     def __init__(self):
         for port in list_ports.comports(include_links=True):
             print(port.device, port.name, port.description)
-
-        self.__master = MainView(eraser_handler = self.__erase)
+        self.__master = MainView(eraser_handler = self.__erase, color_handler = self.__change)
         self.__arduino = Serial('COM3', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
+        self.__master.bind('<space>', self.__erase)
 
     def run(self):
         self.__update_clock()
@@ -33,8 +33,12 @@ class MainApp:
         y_value = int(clean_values[2])
         self.__master.update_dot(x_value, y_value)
 
-    def __erase(self):
+    def __erase(self, event):
         self.__master.erase_window()
+
+    def __change(self, color):
+        self.__master.change_color(color)
+
 
 if __name__ == "__main__":
     app = MainApp()
