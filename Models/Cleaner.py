@@ -1,14 +1,8 @@
-from tkinter import Label, N, S, E, W
+from tkinter import Canvas
 
-class ColorButton(Label):
-    class Constants:
-        font_family = "Quicksand"
-        font_size = 20
-        foreground = '#FFFFFF'
-        center = N + S + W + E
-
+class Cleaner(Canvas):
     class Events:
-        click = "<Button-1>"
+        eraser = "<Button-1>"
 
     def __init__(self, master, text, color):
         super().__init__(master)
@@ -19,4 +13,3 @@ class ColorButton(Label):
 
     def position(self, row, column, columnspan = 1):
         self.grid(row = row, column = column, columnspan = columnspan, sticky = self.Constants.center)
-

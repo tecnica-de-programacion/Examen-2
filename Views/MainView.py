@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Frame, N, S, E, W
+from tkinter import Tk, Canvas, N, S, E, W
 from Views.ColorButton import ColorButton
 
 class MainView(Tk):
@@ -31,7 +31,7 @@ class MainView(Tk):
             self.grid_columnconfigure(column_index, minsize = self.Constants.width / 4, weight = True)
 
     def __configure_ui(self):
-        self.__canvas = Canvas(self, width = self.Constants.width, height = self.Constants.height)
+        self.__canvas = Canvas(self, width = self.Constants.width, height = self.Constants.height, bg = 'gray')
         self.__canvas.grid(row = 0, column = 0, sticky = self.Constants.center, columnspan = self.Constants.span)
 
         self.__blue_button = ColorButton(self, 'Blue', '#278ad1')
