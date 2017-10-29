@@ -1,7 +1,6 @@
 from Views.MainView import MainView
 import serial
 from serial.tools import list_ports
-#import threading
 
 class MainApp():
     class Constants:
@@ -23,11 +22,12 @@ class MainApp():
 
     def __handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
-        bar_value = int(clean_values[1])
-        value_text = clean_values[0]
+        Yvalue = int(clean_values[1])
+        Xvalue=int(clean_values[3])
 
-        self.__master.update_bar(bar_value)
-        self.__master.update_text(value_text)
+
+        self.__master.update_bar(Yvalue,Xvalue,new_position=[])
+
 
 
     def __update_clock(self):

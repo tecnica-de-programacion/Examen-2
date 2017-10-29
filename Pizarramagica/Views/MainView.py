@@ -3,38 +3,43 @@ from tkinter import Tk, Canvas, Label, N, S, E, W
 class MainView(Tk):
     class Constants:
         title = "Pizarra magica"
-        heigth = 700
-        width = 800
+        heigthV = 700
+        widthV = 800
+        heigthC =600
+        widthC = 500
         center = N + S + E + W
-        bar_offset = 30
+
 
         @classmethod
         def size(cls):
-            return "{}x{}".format(cls.width, cls.heigth)
+            return "{}x{}".format(cls.widthV, cls.heigthV)
 
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
+        self.new_position=[]
 
-        self.__rectangle = None
+        self.__line = None
         self.__lable = Label(self)
-        self.__canvas = Canvas(self, width =self.Constants.width, height=self.Constants.heigth)
+        self.__canvas = Canvas(self, width = self.Constants.widthC, height=self.Constants.heigthC,bg="pink")
 
-        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__canvas.grid( sticky=self.Constants.center)
         self.__lable.grid(row=0, column=1, sticky = self.Constants.center)
 
         self.grid_rowconfigure(0, weight=True)
         self.grid_columnconfigure(0, weight=True)
-        self.grid_columnconfigure(1, weight=True, minsize = self.Constants.width / 2)
+        self.grid_columnconfigure(1, weight=True, minsize = self.Constants.widthV / 2)
 
-        self.update_bar(0)
-        self.update_text("0")
+        self.update_bar(0,0,new_position=[])
 
-    def update_text(self, text):
-        self.__lable.configure(text = text)
 
-    def update_bar(self,Xvalue):
-        if self.__rectangle is not None:
-            self.__canvas.delete(self.__rectangle)
-        self.__rectangle = self.__canvas.create_rectangle(self.Constants.bar_offset, self.Constants.heigth-Xvalue , self.Constants.width /2,
+    def update_bar(self,Xvalue,Yvalue,new_position):
+        if len(new_position)==0:
+            return
+        else:
+          new_position[0] = Xvalue
+          new_position[1] = Yvalue
+
+        self.__line = self.__canvas.create_line(new_position[0],new_position[1] ,Xvalue, Yvalue)
+
