@@ -8,6 +8,8 @@ del juguete.
 De igual manera intenté implementar un cambio en los botones mediante background y activebackground,
 no tuve exito.
 
+![alt text](ReadmeAssets/unlucky.gif "Bah")
+
 Como nota de experiencia de este examen, aprendí muchísimo de mis faltas pasadas y auqnue me costó
 realizar el examen, sí se pudo y de la manera que se pedía.
 
