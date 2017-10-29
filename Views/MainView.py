@@ -25,7 +25,6 @@ class MainView(Tk):
 
         self.resizable(width = False, height = False)
 
-
         self.__configure_ui()
         self.__configure_grid()
 

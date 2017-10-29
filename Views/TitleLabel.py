@@ -10,7 +10,6 @@ class TitleLabel(Label):
         bg = '#D80407'
         foreground = '#FFFFFF'
         center = W + E + N + S
-        rigth = E
         span = 4
 
     def __init__(self, master):
