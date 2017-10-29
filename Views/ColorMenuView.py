@@ -7,4 +7,4 @@ class ColorMenuView ():
 
         for index_row, key in enumerate(self.Constants.colors):
             button = ColorButton(master, key)
-            button.position(index_row+1, 1)
+            button.position(index_row+1 , 1)

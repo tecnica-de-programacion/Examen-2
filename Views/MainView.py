@@ -3,10 +3,11 @@ from Views.Button import ColorButton
 from Views.ColorMenuView import ColorMenuView
 
 class MainView(Tk):
+
     class Constants:
         title = "Pizarra magica"
         heigth = 500
-        width = 700
+        width = 715
         heigth_canvas = 500
         width_canvas = 600
         center = N + S + E + W
@@ -21,8 +22,19 @@ class MainView(Tk):
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
         self.minsize(self.Constants.width, self.Constants.heigth)
+        self.maxsize(width=self.Constants.width, height=self.Constants.heigth)
         self.configure_ui()
         self.configure_grid()
+        self.__line = None
+
+        self.bind(self.Events.space_bar, self.__clear)
+
+    class Events:
+        space_bar = "<space>"
+
+    def __clear(self, event):
+        for i in self.__canvas.find_all():
+            self.__canvas.delete(i)
 
     def configure_ui(self):
         self.__label = Label(self, bg = '#BDC3C7' )
@@ -38,5 +50,5 @@ class MainView(Tk):
         self.__label.configure(text = coordinates)
 
     def update_line(self, coordinates):
-        self.__canvas.create_line(coordinates)
+        self.__line = self.__canvas.create_line(coordinates)
 
