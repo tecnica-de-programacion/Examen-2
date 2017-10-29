@@ -23,6 +23,9 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.configure(bg = "#D80407")
 
+        self.resizable(width = False, height = False)
+
+
         self.__configure_ui()
         self.__configure_grid()
 
