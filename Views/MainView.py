@@ -10,6 +10,7 @@ class MainView(Tk):
         span = 4
         last_horizontal = None
         last_vertical = None
+        color = "#202020"
 
         @classmethod
         def size(cls):
@@ -38,20 +39,23 @@ class MainView(Tk):
         self.__canvas = Canvas(self, width = self.Constants.width, height = self.Constants.height, bg = 'gray')
         self.__canvas.grid(row = 0, column = 0, sticky = self.Constants.center, columnspan = self.Constants.span)
 
-        self.__blue_button = ColorButton(self, 'Blue', '#278ad1')
+        self.__blue_button = ColorButton(self, 'Blue', '#278ad1', click_handler = self.__color_chooser)
         self.__blue_button.position(1, 0)
-        self.__green_button = ColorButton(self, 'Green', '#1cb714')
+        self.__green_button = ColorButton(self, 'Green', '#1cb714', click_handler = self.__color_chooser)
         self.__green_button.position(1, 1)
-        self.__red_button = ColorButton(self, 'Red', '#e00808')
+        self.__red_button = ColorButton(self, 'Red', '#e00808', click_handler = self.__color_chooser)
         self.__red_button.position(1, 2)
-        self.__black_button = ColorButton(self, 'Black', '#202020')
+        self.__black_button = ColorButton(self, 'Black', '#202020', click_handler = self.__color_chooser)
         self.__black_button.position(1, 3)
+
+    def __color_chooser(self, color):
+        self.Constants.color = color
 
     def update_line(self, horizontal, vertical):
         if not self.Constants.last_horizontal:
             self.Constants.last_horizontal = horizontal
             self.Constants.last_vertical = vertical
-        self.__canvas.create_line(self.Constants.last_horizontal, self.Constants.last_vertical, horizontal, vertical, fill = 'black', width = 4)
+        self.__canvas.create_line(self.Constants.last_horizontal, self.Constants.last_vertical, horizontal, vertical, fill = self.Constants.color, width = 4)
         self.Constants.last_horizontal = horizontal
         self.Constants.last_vertical = vertical
 
