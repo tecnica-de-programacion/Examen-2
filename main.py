@@ -21,19 +21,13 @@ class MainApp():
         self.__master.mainloop()
 
     def __handle_data(self, data):
+
         clean_values = data.strip(' \n\r').split(",")
-        if clean_values[0] == "Horizontal":
-            position_value = int(clean_values[2])
-            value_text = clean_values[1]
-            axis = clean_values[0]
-            print(axis,position_value,value_text)
 
+        position_value_horizontal = int(clean_values[1])
+        position_value_vertical = int(clean_values[3])
 
-        elif clean_values[0] == "Vertical":
-            position_value = int(clean_values[2])
-            value_text = clean_values[1]
-            axis = clean_values[0]
-            print(axis, position_value, value_text)
+        self.__master.drawing_line(position_value_horizontal,position_value_vertical)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()

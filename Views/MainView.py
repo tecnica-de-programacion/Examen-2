@@ -5,8 +5,8 @@ class MainView(Tk):
     class Constants:
 
         title = "Etch a Sketch 2017 /,,/"
-        canvas_height = 600
-        canvas_width = 500
+        canvas_height = 500
+        canvas_width = 600
         center = N + S + E + W
 
         screen_height = 1000
@@ -21,11 +21,15 @@ class MainView(Tk):
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
 
+        self.__line = None
+
         self.__canvas = Canvas(self, width = self.Constants.canvas_width, height = self.Constants.canvas_height)
 
         self.__canvas.grid(row = 1 , column = 2, sticky = self.Constants.center)
 
+
         self.drawing_line(0,0)
 
-    def drawing_line(self, vertical_position, horizontal_position):
-        self.__rectangle = self.__canvas.create_rectangle(0, self.Constants.canvas_height - vertical_position, 1 , 1 , fill="blue")
+    def drawing_line(self, horizontal_position , vertical_position):
+        print("Horizontal: ",horizontal_position,"Vertical: ", vertical_position)
+        self.__line = self.__canvas.create_line(0, 0 , horizontal_position , self.Constants.canvas_height - vertical_position , fill = "#7d5692")
