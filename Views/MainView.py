@@ -1,5 +1,6 @@
 from tkinter import Tk, N, S, E, W
 from Views.TitleLabel import TitleLabel
+from Views.CanvasBoard import CanvasBoard
 
 class MainView(Tk):
 
@@ -28,6 +29,8 @@ class MainView(Tk):
     def __configure_ui(self):
         self.__title_label = TitleLabel(self)
         self.__title_label.position(0, 0)
+
+        self.__white_board = CanvasBoard(self, self.Constants.board_height, self.Constants.board_width)
 
 
     def __configure_grid(self):
