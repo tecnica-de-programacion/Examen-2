@@ -8,6 +8,8 @@ class MainView(Tk):
         width = 500
         center = N + S + E + W
         span = 4
+        last_horizontal = None
+        last_vertical = None
 
         @classmethod
         def size(cls):
@@ -46,7 +48,12 @@ class MainView(Tk):
         self.__black_button.position(1, 3)
 
     def update_line(self, horizontal, vertical):
-        self.__canvas.create_line(horizontal, vertical, horizontal + 1, vertical + 1, fill = 'black', width = 4)
+        if not self.Constants.last_horizontal:
+            self.Constants.last_horizontal = horizontal
+            self.Constants.last_vertical = vertical
+        self.__canvas.create_line(self.Constants.last_horizontal, self.Constants.last_vertical, horizontal, vertical, fill = 'black', width = 4)
+        self.Constants.last_horizontal = horizontal
+        self.Constants.last_vertical = vertical
 
     def clean(self, event):
         self.__canvas.delete(ALL)
