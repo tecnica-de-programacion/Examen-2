@@ -17,14 +17,14 @@ class MainApp():
         self.__controller = MainModel()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
-        #self.first_data = self.check_data()
-        self.first_data = self.__arduino.readline().decode()
+        self.first_data = self.__controller.handle_data(self.__arduino.readline().decode())
         self.__last_x = self.first_data[0]
         self.__last_y = self.first_data[1]
         self.__draw()
 
     def run(self):
         self.__master.mainloop()
+
 
     def __create_figure(self, data):
         final_point = self.__master.draw_line(self.__last_x, self.__last_y, data)

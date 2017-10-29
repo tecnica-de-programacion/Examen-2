@@ -9,7 +9,7 @@ class MainModel():
         return coordinates
 
     def validator_data(self, data):
-        for i in range(0,10):
+        for i in range(0,5):
             try:
                 datas = data.strip('\n\r').split(',')
                 x = datas[0]
