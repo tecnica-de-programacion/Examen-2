@@ -6,5 +6,5 @@ class CanvasBoard(Canvas):
         super().__init__(master)
         self.__height = height
         self.__width = width
-        self.configure(height = self.__height, width = self.__width, bg = 'white')
+        self.configure(height = self.__height, width = self.__width, bg = '#FFFFFF')
         self.grid(row = 1, column = 0, columnspan = 4)

@@ -21,7 +21,7 @@ class MainView(Tk):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
-        self.configure(bg = "red")
+        self.configure(bg = "#D80407")
 
         self.__configure_ui()
         self.__configure_grid()

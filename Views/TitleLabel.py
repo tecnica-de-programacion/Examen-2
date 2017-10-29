@@ -7,7 +7,7 @@ class TitleLabel(Label):
         border_width = 1
         font_family = "Quicksand"
         font_size = 68
-        bg = 'red'
+        bg = '#D80407'
         foreground = '#FFFFFF'
         center = W + E + N + S
         rigth = E
