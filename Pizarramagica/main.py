@@ -24,8 +24,6 @@ class MainApp():
         clean_values = data.strip(' \n\r').split(",")
         Yvalue = int(clean_values[1])
         Xvalue=int(clean_values[3])
-
-
         self.__master.update_bar(Yvalue,Xvalue,new_position=[])
 
 
