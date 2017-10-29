@@ -23,6 +23,7 @@ class MainView(Tk):
         self.configure(bg = "red")
 
         self.__configure_ui()
+        self.__configure_grid()
 
     def __configure_ui(self):
         self.__title_label = TitleLabel(self)
