@@ -12,11 +12,12 @@ void loop() {
   int sensorValue0 = analogRead(sensorPin0);
   int sensorValue1 = analogRead(sensorPin1); 
   sendData(sensorValue0, sensorValue1);
+  delay(100);
 } 
 
 void sendData(int value0, int value1) {
-  mapValue0 = map(value0, 0, 1023, 0, 400);
-  mapValue1 = map(value1, 0, 1023, 0, 400);
+  mapValue0 = map(value0, 0, 1023, 0, 500);
+  mapValue1 = map(value1, 0, 1023, 0, 600);
   Serial.print(mapValue0);
   Serial.print(",");
   Serial.println(mapValue1);

@@ -4,7 +4,9 @@ class MainView(Tk):
     class Constants:
         title = "Pizarra magica"
         heigth = 500
-        width = 600
+        width = 700
+        heigth_canvas = 500
+        width_canvas = 600
         center = N + S + E + W
 
         @classmethod
@@ -16,6 +18,16 @@ class MainView(Tk):
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
 
+        self.__label = Label(self, bg = '#BDC3C7' )
+        self.__canvas = Canvas(self, width=self.Constants.width_canvas, height=self.Constants.heigth_canvas, bg = '#ffffff')
 
+        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__label.grid(row=0, column = 1, sticky = N)
 
+    def update_position(self, coordinates):
+        self.__label.configure(text = coordinates)
+
+    def update_line(self, coordinates):
+        print(coordinates)
+        self.__canvas.create_line(coordinates)
 
