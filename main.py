@@ -1,6 +1,7 @@
 from Views.MainView import MainView
 import serial
 from serial.tools import list_ports
+from Models.InteractiveCanvasBrain import InteractiveCanvasBrain
 
 class MainApp():
     class Constants:
@@ -13,6 +14,7 @@ class MainApp():
             print(port.device, port.name, port.description)
 
         self.__master = MainView()
+        self.__magic_board = InteractiveCanvasBrain()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.__update_clock()
@@ -22,6 +24,9 @@ class MainApp():
 
     def __handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
+        x_coordinate = clean_values[0]
+        y_coordinate = clean_values[1]
+        self.draw(x_coordinate, y_coordinate)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
@@ -31,6 +36,10 @@ class MainApp():
     def __on_closing(self):
         self.__arduino.close()
         self.__master.destroy()
+
+    def draw(self, x_coordinate, y_coordinate):
+        coordinates = self.__magic_board.get_coordinates(x_coordinate, self.__magic_board.Constants.canvas_heigth - y_coordinate)
+        self.__master.new_line(coordinates)
 
 if __name__ == "__main__":
     app = MainApp()
