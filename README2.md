@@ -1,4 +1,4 @@
-TU-NOBRE-AQUI - Examen 2 - Pizarra Magica
+LOPEZ VELAZQUEZ VICTOR DAVID- Examen 2 - Pizarra Magica
 ======
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
