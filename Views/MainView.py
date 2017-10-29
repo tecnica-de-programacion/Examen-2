@@ -8,6 +8,7 @@ class MainView(Tk):
         bar_offset = 300
         height_inside = 500
         width_inside = 600
+        tecla = "<Enter>"
 
 
         @classmethod
@@ -20,30 +21,31 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.minsize(self.Constants.width_outside, self.Constants.heigth_outside)
         self.maxsize(self.Constants.width_outside,self.Constants.heigth_outside)
-
         self.lines = None
 
         self.label = Label(self)
 
-        self.canvas = Canvas(self, width = self.Constants.width_inside,height =self.Constants.height_inside)
-        self.label.grid(row = 0, column = 3, sticky = W)
-        self.canvas.grid(row= 0, column = 0, sticky = self.Constants.center_main_window)
+        self.canvas = Canvas(self, width=self.Constants.width_inside, height=self.Constants.height_inside)
+        self.label.grid(row=0, column=3, sticky=W)
+        self.canvas.grid(row=0, column=0, sticky=self.Constants.center_main_window)
         self.grid_rowconfigure(0, weight=True)
         self.grid_columnconfigure(1, weight=True)
 
         self.button_black = None
         self.button_green = None
         self.button_blue = None
-        self.button_yellow= None
+        self.button_red= None
         self.color = self.create_buttons()
         self.create_main_window_drawing()
 
     def create_drawing(self, vertical, horizontal):
         if self.lines is not None:
             self.canvas.delete(self.lines)
-        self.lines = self.canvas.create_line(300-horizontal, 300, 300-vertical,300, fill = self.color)
-        self.position_y =  self.canvas.coords(self.lines)
-        print(self.position_y)
+        self.lines = self.canvas.create_line((350,300),(vertical, horizontal), fill = self.color,activewidth = 5, width = 5)
+        print(self.canvas.coords(self.lines))
+
+
+
 
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
@@ -55,8 +57,8 @@ class MainView(Tk):
         self.canvas.tag_bind(self.button_green, "<Button-1>", lambda x: self.setColor("green"))
         self.button_blue = self.canvas.create_rectangle((210,10,290,50) ,fill= "blue")
         self.canvas.tag_bind(self.button_blue, "<Button-1>", lambda x: self.setColor("Blue"))
-        self.button_yellow = self.canvas.create_rectangle((310,10,390,50) ,fill= "yellow")
-        self.canvas.tag_bind(self.button_yellow, "<Button-1>", lambda x: self.setColor("yellow"))
+        self.button_red = self.canvas.create_rectangle((310,10,390,50) ,fill= "red")
+        self.canvas.tag_bind(self.button_red, "<Button-1>", lambda x: self.setColor("red"))
 
     def setColor(self,newcolor):
         self.color = newcolor
