@@ -49,40 +49,12 @@ class MainView(Tk):
         self.__title_label.position(0, 0)
 
         self.__white_board = CanvasBoard(self, self.Constants.white_board_height, self.Constants.white_board_width)
-        self.__keypad = KeypadView(self)
+        self.__keypad = KeypadView(self, tap_button_handler = self.__color_tapped)
 
-        #self.__black_button = Button(self)
-        #self.__black_button.configure(text = "Black")
-        #self.__black_button.grid(row = 3, column = 0, sticky = self.Constants.center)
-        #self.__black_button.bind(self.Events.click, self.__did_tap_black_button)
-
-        #self.__red_button = Button(self)
-        #self.__red_button.configure(text = "Red")
-        #self.__red_button.grid(row = 3, column = 1, sticky = self.Constants.center)
-        #self.__red_button.bind(self.Events.click, self.__did_tap_red_button)
-
-
-        #self.__green_button = Button(self)
-        #self.__green_button.configure(text = "Green")
-        #self.__green_button.grid(row=3, column=2, sticky=self.Constants.center)
-        #self.__green_button.bind(self.Events.click, self.__did_tap_green_button)
-
-        #self.__blue_button = Button(self)
-        #self.__blue_button.configure(text = "Blue")
-        #self.__blue_button.grid(row=3, column=3, sticky=self.Constants.center)
-        #self.__blue_button.bind(self.Events.click, self.__did_tap_blue_button)
-
-    #def __did_tap_black_button(self, event):
-        #self.__color = "#000000"
-
-    #def __did_tap_red_button(self, event):
-        #self.__color = "#FF0000"
-
-    #def __did_tap_blue_button(self, event):
-        #self.__color = "#2980B9"
-
-    #def __did_tap_green_button(self, event):
-        #self.__color = "#138D75"
+    def __color_tapped(self, color):
+        self.__color = color
+        print("MainViewLvel")
+        print(self.__color)
 
     def __get_color(self):
         return self.__color
