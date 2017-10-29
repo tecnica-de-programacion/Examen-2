@@ -46,7 +46,7 @@ class MainView(Tk):
         self.__black_button.position(1, 3)
 
     def update_line(self, horizontal, vertical):
-        self.__canvas.create_line(horizontal, vertical, horizontal + 1, vertical + 1, fill = 'black')
+        self.__canvas.create_line(horizontal, vertical, horizontal + 1, vertical + 1, fill = 'black', width = 4)
 
     def clean(self, event):
         self.__canvas.delete(ALL)
