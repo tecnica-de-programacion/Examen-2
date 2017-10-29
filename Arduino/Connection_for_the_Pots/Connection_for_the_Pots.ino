@@ -1,4 +1,3 @@
-
 int sensorPin0 = A0;
 int sensorPin1 = A1;
 int potValue = 0;
@@ -13,6 +12,7 @@ void loop() {
   sendDataHorizontal(sensorValueHorizontal);
   int sensorValueVertical = analogRead(sensorPin1);
   sendDataVertical(sensorValueVertical);
+  delay(100);
 }
 
 void sendDataHorizontal(int value) {
