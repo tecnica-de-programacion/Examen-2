@@ -22,15 +22,18 @@ class MainApp():
     def run(self):
         self.__master.mainloop()
 
-    def __handle_data(self, data):
+    def __handler_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
-        x_coordinate = clean_values[0]
-        y_coordinate = clean_values[1]
+        try:
+            x_coordinate = int(clean_values[1])
+            y_coordinate = int(clean_values[0])
+        except IndexError:
+            return
         self.draw(x_coordinate, y_coordinate)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
-        self.__handle_data(data)
+        self.__handler_data(data)
         self.__master.after(1, self.__update_clock)
 
     def __on_closing(self):
@@ -38,7 +41,7 @@ class MainApp():
         self.__master.destroy()
 
     def draw(self, x_coordinate, y_coordinate):
-        coordinates = self.__magic_board.get_coordinates(x_coordinate, self.__magic_board.Constants.canvas_heigth - y_coordinate)
+        coordinates = self.__magic_board.get_composed_coordinates(x_coordinate, self.__magic_board.Constants.canvas_heigth - y_coordinate)
         self.__master.new_line(coordinates)
 
 if __name__ == "__main__":
