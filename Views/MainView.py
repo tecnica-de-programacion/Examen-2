@@ -32,7 +32,7 @@ class MainView(Tk):
 
     def configure_grid(self):
         self.__canvas.grid(row=0, column=0, sticky=self.Constants.center, rowspan = self.Constants.span)
-        self.__label.grid(row=0, column = 1, sticky = N)
+        self.__label.grid(row=0, column = 1, sticky = self.Constants.center)
 
     def update_position(self, coordinates):
         self.__label.configure(text = coordinates)

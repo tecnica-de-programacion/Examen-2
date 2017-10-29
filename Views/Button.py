@@ -1,4 +1,4 @@
-from tkinter import Button, PhotoImage
+from tkinter import Button, PhotoImage, N, S, E, W
 
 class ColorButton(Button):
     class Constants:
@@ -7,6 +7,7 @@ class ColorButton(Button):
         Black = "Assets\Black.gif"
         Green = "Assets\Green.gif"
         event = "<Button-1>"
+        center = N + S + W + E
 
     def __init__(self, master, key, action=None):
         super().__init__(master)
@@ -27,7 +28,7 @@ class ColorButton(Button):
         self.configure(image= self.__image)
 
     def position(self, row, column):
-        self.grid(row=row, column=column)
+        self.grid(row=row, column=column, sticky = self.Constants.center)
 
 
 
