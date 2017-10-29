@@ -26,11 +26,7 @@ class MainApp():
 
     def __update_sketch(self):
         data_arduino = self.__arduino.readline().decode()
-        data_p = self.__arduino.readline()
-        print(data_p)
-        #self.__master.after(1, self.__update_sketch)
         data = self.__data.clean_data(data_arduino)
-        #print(data)
         try:
             self.__master.update_line(int(data[0]), int(data[1]))
         except ValueError:
