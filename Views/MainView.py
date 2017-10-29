@@ -25,7 +25,6 @@ class MainView(Tk):
         self.maxsize(width=self.Constants.width, height=self.Constants.heigth)
         self.configure_ui()
         self.configure_grid()
-        self.__line = None
 
         self.bind(self.Events.space_bar, self.__clear)
 
@@ -50,5 +49,5 @@ class MainView(Tk):
         self.__label.configure(text = coordinates)
 
     def update_line(self, coordinates):
-        self.__line = self.__canvas.create_line(coordinates)
+        self.__canvas.create_line(coordinates)
 
