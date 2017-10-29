@@ -7,7 +7,8 @@ class MainApp():
         self.__master = MainView()
         self.__arduino = Serial('/dev/tty.usbmodem1451', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
-        self.__coordinates = CoordinatesManager(update_handler=self.on_coordinates_change)
+        self.__coordinates = CoordinatesManager(update_handler=self.on_coordinates_change, reset_handler=self.reset_coordinates)
+        self.__master.bind('<space>', self.on_space_clicked)
 
     def run(self):
         self.__update_clock()
@@ -25,8 +26,15 @@ class MainApp():
     def update_coordintes(self, coordinates):
         self.__master.update_drawing(coordinates)
 
+    def reset_coordinates(self):
+        print('I am the reset handler')
+
     def on_coordinates_change(self, coordinates):
         self.update_coordintes(coordinates)
+
+    def on_space_clicked(self, event):
+        print('Space bar was clicked')
+        self.__coordinates.reset_values()
 
 
 
