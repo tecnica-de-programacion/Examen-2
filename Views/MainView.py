@@ -30,22 +30,18 @@ class MainView(Tk):
         self.maxsize(self.Constants.width,self.Constants.height)
         self.minsize(self.Constants.width, self.Constants.height)
         self.__canvas = Canvas(self.__frame, width = self.Constants.width_pizarra, height = self.Constants.height_pizarra)
-        self.__canvas.grid(column = 0, row = 0, columnspan = 1, rowspan = 2, sticky = self.Constants.center)
-        # self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
-        self.__canvas.create_rectangle(0, 0, self.Constants.width_pizarra, self.Constants.height_pizarra, fill = 'blue')
+        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__canvas.create_rectangle(0, 0, self.Constants.width_pizarra, self.Constants.height_pizarra, fill = 'white')
         self.__label = Label(self.__frame, text = 'COLORES')
 
-        self.__label.grid(row=0, column=3, sticky = self.Constants.center)
         self.__label.grid(row=0, column=3, sticky = N + E)
         self.grid_rowconfigure(0, weight = True)
-        #self.grid_rowconfigure(0, weight = 1)
         self.grid_columnconfigure(0, weight = True)
-        #self.grid_columnconfigure(0, weight = 1)
 
-    def __draw_line (self, initial_x, initial_y, data):
+    def draw_line (self, initial_x, initial_y, data):
         vector = self.__controller.handle_data(data)
         x = vector[0]
         y = vector[1]
-        if abs(x - int(last_x)) > 5 or abs(y - int(last_y)) > 5:
-            self.__canvas.create_line(initial_x, initial_y, x, y)
-            return vector
+
+        self.__canvas.create_line(initial_x, initial_y,x,y)
+        return vector
