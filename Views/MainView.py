@@ -23,7 +23,10 @@ class MainView(Tk):
 
         self.lines = None
 
+        self.label = Label(self)
+
         self.canvas = Canvas(self, width = self.Constants.width_inside,height =self.Constants.height_inside)
+        self.label.grid(row = 0, column = 3, sticky = W)
         self.canvas.grid(row= 0, column = 0, sticky = self.Constants.center_main_window)
         self.grid_rowconfigure(0, weight=True)
         self.grid_columnconfigure(1, weight=True)
@@ -32,15 +35,16 @@ class MainView(Tk):
         self.button_green = None
         self.button_blue = None
         self.button_yellow= None
-        #self.color = ""
+        self.color = self.create_buttons()
         self.create_main_window_drawing()
-        self.create_buttons()
-    #def create_drawing(self, vertical, horizontal):
-      #  if self.lines is not None:
-       #     self.canvas.delete(self.lines)
-        #self.lines = self.canvas.create_line(300-horizontal, 300, 300-vertical,300)
-        #self.position_y =  self.canvas.coords(self.lines)
-        #print(self.position_y)
+
+    def create_drawing(self, vertical, horizontal):
+        if self.lines is not None:
+            self.canvas.delete(self.lines)
+        self.lines = self.canvas.create_line(300-horizontal, 300, 300-vertical,300, fill = self.color)
+        self.position_y =  self.canvas.coords(self.lines)
+        print(self.position_y)
+
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
 
@@ -57,6 +61,7 @@ class MainView(Tk):
     def setColor(self,newcolor):
         self.color = newcolor
         print(self.color)
+        return self.color
 
 
 
