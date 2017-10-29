@@ -11,6 +11,7 @@ class MainView(Tk):
         height_canvas = 600
         center = N + S + E + W
         text_label = "cambia el color"
+        radio = 5
 
         @classmethod
         def size(cls):
@@ -39,7 +40,9 @@ class MainView(Tk):
         coordinates_tupla = self.__controller.handle_data(data)
         x = coordinates_tupla[0]
         y =coordinates_tupla[1]
-        self.__canvas.create_oval(x-10,y-10,x+10,y+10,fill = "red" )
+        self.__canvas.create_oval(x-self.Constants.radio,y-self.Constants.radio,x+self.Constants.radio,y+self.Constants.radio,fill = "red" )
+
+
 
 
 
