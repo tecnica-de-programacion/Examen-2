@@ -19,7 +19,7 @@ class MainView(Tk):
         def size (cls):
             return '{}x{}'.format(cls.width, cls.height)
 
-    def __init__(self):
+    def __init__(self, color_handler=None):
         super().__init__()
 
         self.title(self.Constants.title)
@@ -36,14 +36,14 @@ class MainView(Tk):
         self.title = Label(self, text=self.Constants.title, bg=self.Constants.border_color, font=self.Constants.font, pady=20)
         self.title.grid(row=0, column=0)
 
-        ButtonsArea(self, self.Constants.buttons_title)
+        ButtonsArea(self, self.Constants.buttons_title, color_handler)
 
-    def update_drawing(self, coordinates):
+    def update_drawing(self, coordinates, color):
         print(coordinates.actual_x_coordinate, coordinates.actual_y_coordinate,
               coordinates.modify_x_coordinate, coordinates.modify_y_coordinate)
 
         self.__magic_board.create_line(coordinates.actual_x_coordinate, 500-coordinates.actual_y_coordinate,
-                                       coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate, fill=self.line_color)
+                                       coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate, fill=color)
 
     def reset_drawing(self):
         print('Reseting drawing canvas')
