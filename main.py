@@ -36,7 +36,6 @@ class MainApp():
         self.__coordinates.reset_values()
 
 
-
 if __name__ == "__main__":
     app = MainApp()
     app.run()
