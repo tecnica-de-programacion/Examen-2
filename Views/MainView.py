@@ -21,7 +21,7 @@ class MainView(Tk):
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
 
-        self.__line = None
+        self.__line= None
 
         self.__canvas = Canvas(self, width = self.Constants.canvas_width, height = self.Constants.canvas_height)
 
@@ -32,4 +32,4 @@ class MainView(Tk):
 
     def drawing_line(self, horizontal_position , vertical_position):
         print("Horizontal: ",horizontal_position,"Vertical: ", vertical_position)
-        self.__line = self.__canvas.create_line(0, 0 , horizontal_position , self.Constants.canvas_height - vertical_position , fill = "#7d5692")
+        self.__line = self.__canvas.create_rectangle( horizontal_position ,self.Constants.canvas_height - vertical_position , horizontal_position + 10 ,self.Constants.canvas_height - vertical_position + 10 ,fill = "#7d5692")
