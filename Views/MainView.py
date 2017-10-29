@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W
+from tkinter import Tk, Canvas, Label, Frame, N, S, E, W
 from Models.MainModel import MainModel
 
 class MainView(Tk):
@@ -22,19 +22,26 @@ class MainView(Tk):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
+
+        self.__frame = Frame(self)
+        self.__frame.grid(column =0, row = 0)
+
+
+
+        self.configure(background = "dark red")
+
         self.__controller = MainModel()
-        self.configure(background = "pink")
         self.maxsize(self.Constants.width, self.Constants.height)
         self.minsize(self.Constants.width,self.Constants.height)
-
-        self.__canvas = Canvas(self, width = self.Constants.width_canvas, height = self.Constants.height_canvas)
+        #modifique self.__canvas = y label
+        self.__canvas = Canvas(self.__frame, width = self.Constants.width_canvas, height = self.Constants.height_canvas)
         self.__canvas.grid(column = 0, row= 0, columnspan = 2, rowspan = 2,  sticky = self.Constants.center)
-        self.__canvas.create_rectangle(0,0,self.Constants.width_canvas,self.Constants.height_canvas,fill = "red")
+        self.__canvas.create_rectangle(0,0,self.Constants.width_canvas,self.Constants.height_canvas,fill = "white")
         self.label = Label(text =self.Constants.text_label)
         #self.label2 = Label(text = "prueba")
 
 
-       # self.label2.grid(column =3, row = 2, sticky = self.Constants.center)
+        # self.label2.grid(column =3, row = 2, sticky = self.Constants.center)
         self.label.grid(column = 3, row = 0 , sticky = N + E)
         self.grid_rowconfigure(0, weight = 1)
         self.grid_columnconfigure(0, weight = 1)
