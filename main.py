@@ -27,6 +27,10 @@ class MainApp():
     def __handle_data(self, data):
         clean_values = data.strip(" \n\r").split(",")
         print(clean_values)
+        horizontal = int(clean_values[1])
+        vertical = int(clean_values[3])
+
+        self.__master.update_line(horizontal, vertical)
 
 if __name__ == '__main__':
     app = MainApp()
