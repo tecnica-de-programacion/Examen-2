@@ -1,7 +1,7 @@
 int sensorPin1 = A0;
 int sensorPin2 = A1;
-int potValue = 0;
-int mapValue = 0;
+int mapValue1 = 0;
+int mapValue2 = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -15,8 +15,8 @@ void loop() {
 }
 
 void sendData(int value1, int value2){
-  mapValue1 = map(value1, 0, 1023, 0, 400);
-  mapValue2 = map(value2, 0, 1023, 0, 400);
+  mapValue1 = map(value1, 0, 1023, 0, 500);
+  mapValue2 = map(value2, 0, 1023, 0, 600);
   Serial.print(value1);
   Serial.print(",");
   Serial.print(mapValue1);

@@ -26,8 +26,9 @@ class MainApp():
 
     def __handle_data(self, data):
         clean_values = data.strip(" \n\r").split(",")
-
         print(clean_values)
+
+
 
 if __name__ == '__main__':
     app = MainApp()
