@@ -21,4 +21,5 @@ void sendData(int horizontal, int vertical) {
   Serial.print(",");
   Serial.print(mapValue_vertical);
   Serial.println("");
+  delay(100);
 }
