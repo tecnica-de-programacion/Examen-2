@@ -4,7 +4,7 @@ from serial.tools import list_ports
 
 class MainApp():
     class Constants:
-        port = "/dev/tty.usbmodem1421"
+        port = "/dev/tty.usbmodem1411"
         baud = 115200
         close_event = "WM_DELETE_WINDOW"
 
@@ -27,7 +27,9 @@ class MainApp():
         position_value_horizontal = int(clean_values[1])
         position_value_vertical = int(clean_values[3])
 
-        self.__master.drawing_line(position_value_horizontal,position_value_vertical)
+        self.__master.drawing_line(position_value_horizontal, position_value_vertical)
+        self.__master.Constants.positions(position_value_horizontal,position_value_vertical)
+
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()

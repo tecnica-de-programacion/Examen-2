@@ -12,24 +12,30 @@ class MainView(Tk):
         screen_height = 1000
         screen_width = 1000
 
+        horizontal_position = 0
+        vertical_position = 0
+
         @classmethod
         def size(cls):
             return "{}x{}".format(cls.screen_width, cls.screen_height)
+
+        @classmethod
+        def positions(cls, new_horizontal_position, new_vertical_position):
+            cls.horizontal_position = new_horizontal_position
+            cls.vertical_position = new_vertical_position
 
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
 
-        self.__line= None
+        self.__line = None
 
         self.__canvas = Canvas(self, width = self.Constants.canvas_width, height = self.Constants.canvas_height)
 
         self.__canvas.grid(row = 1 , column = 2, sticky = self.Constants.center)
 
-
-        self.drawing_line(0,0)
-
-    def drawing_line(self, horizontal_position , vertical_position):
-        print("Horizontal: ",horizontal_position,"Vertical: ", vertical_position)
-        self.__line = self.__canvas.create_rectangle( horizontal_position ,self.Constants.canvas_height - vertical_position , horizontal_position + 10 ,self.Constants.canvas_height - vertical_position + 10 ,fill = "#7d5692")
+    def drawing_line(self, horizontal_position, vertical_position):
+        print("Horizontal: ", horizontal_position, "Vertical: ", vertical_position)
+        if self.__line == None: self.__line = self.__canvas.create_rectangle( 0 , 0 , 0 , 0 ,fill = "#7d5692", width = 0)
+        else: self.__line = self.__canvas.create_rectangle( self.Constants.horizontal_position ,self.Constants.canvas_height - self.Constants.vertical_position , horizontal_position ,self.Constants.canvas_height - vertical_position ,fill = "#7d5692", width = 0)
