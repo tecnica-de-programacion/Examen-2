@@ -4,7 +4,7 @@ class MainModel():
 
     def handle_data(self, data):
         new_coordinates = data.strip('\n\r').split(',')
-        print(new_coordinates)
+        #print(new_coordinates)
         coordinates = (int(new_coordinates[0]),int(new_coordinates[1]))
         return coordinates
 

@@ -40,8 +40,5 @@ class MainView(Tk):
 
     def draw_line (self, initial_x, initial_y, data):
         vector = self.__controller.handle_data(data)
-        x = vector[0]
-        y = vector[1]
-
-        self.__canvas.create_line(initial_x, initial_y,x,y)
+        self.__canvas.create_line(initial_x, initial_y, vector[0], vector[1])
         return vector
