@@ -2,22 +2,48 @@ from tkinter import Tk, Canvas, Label, N, S, E, W
 class MainView(Tk):
     class Constants:
         title = "PIZARRA MAGICA"
-        heigth = 400
-        width = 400
-        center = N + S + E + W
-        bar_offset = 1
-
-        heigth_inside = 100
-        width_inside = 100
+        heigth_outside = 700
+        width_outside = 800
+        center_main_window = N + S + E + W
+        bar_offset = 300
+        height_inside = 500
+        width_inside = 600
+        width_button = 200
 
         @classmethod
         def size(cls):
-            return "{}x{}".format(cls.width, cls.heigth)
+            return "{}x{}".format(cls.width_outside, cls.heigth_outside)
 
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
+        self.minsize(self.Constants.width_outside, self.Constants.heigth_outside)
+        self.maxsize(self.Constants.width_outside,self.Constants.heigth_outside)
+
+        #acomodo los botones
+        self.__order_button()
+        self.__configure_buttons()
+
+    def __order_button(self):
+        self.grid_rowconfigure(0, weight = True)
+        self.grid_rowconfigure(0, weight = True)
+        self.grid_rowconfigure(0, weight = True)
+        self.grid_columnconfigure(0, minsize = self.Constants.width_button)
+        self.grid_columnconfigure(1, minsize = self.Constants.width_button)
+        self.grid_columnconfigure(2, minsize = self.Constants.width_button)
+
+    def __configure_buttons(self):
+        color_black = Label(self)
+        color_black.grid(row = 0, column = 0, sticky = N)
+        color_black.configure(text = "NEGRO")
+
+        color_green = Label(self)
+        color_green.grid(row = 0, column = 2, sticky = N)
+        color_green.configure(text = "GREEN")
+        color_blue = Label(self)
+
+
 
 
 
