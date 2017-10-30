@@ -38,3 +38,6 @@ class MainView(Tk):
 
         for column_index in range(4):
             self.grid_columnconfigure(column_index, minsize = self.Constants.window_width / 4)
+            
+    def create_line(self, coordinate):
+        self.__board.create_line(coordinate)
