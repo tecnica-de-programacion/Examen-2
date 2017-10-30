@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W,Button,RIGHT
+from tkinter import Tk, Canvas, Label, N, S, E, W , Button
 
 class MainView(Tk):
     class Constants:
@@ -18,30 +18,25 @@ class MainView(Tk):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
-        self.new_position=[]
-        self.__line = None
+        self.__new_position=[0,0]
+        #self.__line = None
         self.__canvas = Canvas(self, width = self.Constants.widthC, height=self.Constants.heigthC,bg="red").grid(row=2,column=2)
         self.__botonA=Button(self,text="Blue",bg="blue").grid(row=1,column=1)
         self.__botonB = Button(self, text="Black", bg="black").grid(row=3,column=3)
         self.__botonV= Button(self, text="Green", bg="green").grid(row=1,column=3)
         self.__botonR = Button(self, text="Red", bg="Red").grid(row=3,column=1)
+        self.update_bar(0,0)
 
 
 
-        #self.grid_rowconfigure(0, weight=True)
-        #self.grid_columnconfigure(0, weight=True)
-        #self.grid_columnconfigure(1, weight=True, minsize = self.Constants.widthV / 2)
 
-        self.update_bar(0,0,new_position=[])
-
-
-
-    def update_bar(self,Xvalue,Yvalue,new_position):
-        if len(new_position)==0:
-            return
+    def update_bar(self,Xvalue,Yvalue):
+        if self.__new_position:
+            self.__canvas.create_line(self.__new_position[0] , self.__new_position[1], Xvalue, Yvalue)
+            self.__new_position[0]= Xvalue
+            self.__new_position[1] = Yvalue
         else:
-          new_position[0] = Xvalue
-          new_position[1] = Yvalue
+            self.__new_position.append(Xvalue)
+            self.__new_position.append(Yvalue)
 
-        self.__line = self.__canvas.create_line(new_position[0],new_position[1] ,Xvalue, Yvalue)
 
