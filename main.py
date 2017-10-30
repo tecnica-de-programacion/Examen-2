@@ -1,6 +1,7 @@
 from Views.MainView import MainView
 from serial import Serial
 from serial.tools import list_ports
+from Models.BoardBrain import BoardBrain
 
 class MainApp():
 
@@ -9,6 +10,7 @@ class MainApp():
             print(port.device, port.name, port.description)
 
         self.__master = MainView()
+        self.__board_brain = BoardBrain()
         self.__arduino = Serial('COM4', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
@@ -32,7 +34,11 @@ class MainApp():
             horizontal_value = int(clean_values[1])
         except Exception:
             return
-        #self.update_coordinate(horizontal_value, vertical_value)
+        self.update_coordinate(horizontal_value, vertical_value)
+
+    def update_coordinate(self, x_coordinate, y_coordinate):
+        coordinate = self.__board_brain.get_coordinates(x_coordinate, self.__board_brain.Constants.heigth - y_coordinate)
+        self.__master.create_line(coordinate)
 
 if __name__ == "__main__":
     app = MainApp()
