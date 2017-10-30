@@ -5,8 +5,14 @@ class Coordinates:
 
     @property
     def x_coordinate(self):
-        return int(self.__x_coordinate)
+        try:
+            return int(self.__x_coordinate)
+        except:
+            return None
 
     @property
     def y_coordinate(self):
-        return int(self.__y_coordinate)
+        try:
+            return int(self.__y_coordinate)
+        except:
+            return None

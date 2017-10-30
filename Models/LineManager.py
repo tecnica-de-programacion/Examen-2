@@ -9,7 +9,6 @@ class LineManager():
         self.__reset_handler = reset_handler
         self.__color = 'black'
 
-
     def __clean_data(self, data):
         clean_values = data.strip(" \n\r").split(",")
         return clean_values
@@ -18,6 +17,9 @@ class LineManager():
 
         coordinates_value = self.__clean_data(data)
         modify_coordinates = Coordinates(coordinates_value)
+
+        if modify_coordinates.y_coordinate is None or modify_coordinates.x_coordinate is None:
+             return
 
         if self.__actual_x_coordinate is None and self.__actual_y_coordinate is None:
             self.__actual_x_coordinate = modify_coordinates.x_coordinate
@@ -34,6 +36,7 @@ class LineManager():
                 self.__actual_y_coordinate = modify_coordinates.y_coordinate
 
                 self.__update_handler(coordinates, self.__color)
+
 
     def reset_values(self):
         self.__actual_x_coordinate = None

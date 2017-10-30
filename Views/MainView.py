@@ -1,19 +1,17 @@
 from tkinter import Tk, Label, Canvas, N, S, E, W, LabelFrame, PhotoImage
 from Views.ButtonsArea import ButtonsArea
-from Views.ColorButton import ColorButton
-from Views.CustomColors import Colors
 
 
 class MainView(Tk):
     class Constants:
-        title = "Pizarra Magica"
+        title = "Pizarra Mágica"
         buttons_title = "Selecciona el color de la linea"
-        font = ("Quicksand", 28, "bold")
+        font = ("Phosphate", 48, "bold")
         height = 900
         width = 1000
         center = N + S + E + W
-        border_color = 'salmon'
-        magic_board_color = 'white'
+        border_color = '#F44336'
+        magic_board_color = '#FAFAFA'
 
         @classmethod
         def size (cls):

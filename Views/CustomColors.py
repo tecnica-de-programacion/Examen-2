@@ -1,8 +1,8 @@
 class Colors():
 
     colors = [
-                ['black', 'Assets/black_medal.ppm'],
-                ['blue', 'Assets/blue_medal.ppm'],
-                ['red', 'Assets/red_medal.ppm'],
-                ['green', 'Assets/green_medal.ppm']
+                ['#212121', 'Assets/black_medal.ppm'],
+                ['#00BCD4', 'Assets/blue_medal.ppm'],
+                ['#F44336', 'Assets/red_medal.ppm'],
+                ['#8BC34A', 'Assets/green_medal.ppm']
               ]
