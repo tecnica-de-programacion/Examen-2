@@ -26,7 +26,6 @@ class MainApp():
         line_horizontal = int(clean_values[0])
         self.__master.create_drawing(line_horizontal, line_vertical)
 
-
     def __update_clock(self):
         data = self.__arduino.readline().decode()
         self.__handle_data(data)
