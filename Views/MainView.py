@@ -1,5 +1,6 @@
 from tkinter import Tk, N, S, E, W
 from Views.DrawBoard import DrawBoard
+from Views.KeypadView import KeypadView
 
 class MainView(Tk):
 
@@ -28,6 +29,7 @@ class MainView(Tk):
 
     def __configure_ui(self):
         self.__board = DrawBoard(self, self.Constants.board_height, self.Constants.board_width)
+        self.__keypad = KeypadView(self)
 
     def __configure_grid(self):
         self.grid_rowconfigure(0, minsize = self.Constants.border)
@@ -40,4 +42,4 @@ class MainView(Tk):
             self.grid_columnconfigure(column_index, minsize = self.Constants.window_width / 4)
             
     def create_line(self, coordinate):
-        self.__board.create_line(coordinate)
+        self.__board.create_line(coordinate, fill = self.__keypad.get_color)
