@@ -22,7 +22,7 @@ class MainApp():
     def __update_clock(self):
         data = self.__arduino.readline().decode()
         self.__coordinates.analize_data(data)
-        self.__master.after(100, self.__update_clock)
+        self.__master.after(10, self.__update_clock)
 
     def update_coordintes(self, coordinates, color):
         self.__master.update_drawing(coordinates, color)

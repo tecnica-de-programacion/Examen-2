@@ -41,7 +41,8 @@ class MainView(Tk):
               coordinates.modify_x_coordinate, coordinates.modify_y_coordinate)
 
         self.__magic_board.create_line(coordinates.actual_x_coordinate, 500-coordinates.actual_y_coordinate,
-                                       coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate, fill=color)
+                                       coordinates.modify_x_coordinate, 500-coordinates.modify_y_coordinate,
+                                       fill=color, width=2)
 
     def reset_drawing(self):
         print('Reseting drawing canvas')

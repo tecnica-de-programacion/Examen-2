@@ -1,7 +1,10 @@
 class Coordinates:
     def __init__(self, coordinates_value):
-        self.__x_coordinate = coordinates_value[1]
-        self.__y_coordinate = coordinates_value[0]
+        try:
+            self.__x_coordinate = coordinates_value[1]
+            self.__y_coordinate = coordinates_value[0]
+        except IndexError:
+            pass
 
     @property
     def x_coordinate(self):
