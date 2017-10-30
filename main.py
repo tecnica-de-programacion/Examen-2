@@ -1,5 +1,5 @@
 from Views.MainView import MainView
-from Models.Brain import MainModel
+from Models.Brain import Brain
 from serial.tools import list_ports
 import serial
 
@@ -14,7 +14,7 @@ class MainApp():
             print(port.device, port.name, port.description)
 
         self.__master = MainView()
-        self.__controller = MainModel()
+        self.__controller = Brain()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.first_data = self.__controller.handle_data(self.__arduino.readline().decode())

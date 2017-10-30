@@ -1,5 +1,6 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W, Frame
-from Models.Brain import MainModel
+from tkinter import *
+#from tkinter import Tk, Canvas, Label, N, S, E, W, Frame
+from Models.Brain import Brain
 
 
 class MainView(Tk):
@@ -26,7 +27,7 @@ class MainView(Tk):
 
         self.configure(background = 'blue')
 
-        self.__controller = MainModel()
+        self.__controller = Brain()
         self.maxsize(self.Constants.width,self.Constants.height)
         self.minsize(self.Constants.width, self.Constants.height)
         self.__canvas = Canvas(self.__frame, width = self.Constants.width_pizarra, height = self.Constants.height_pizarra)
@@ -37,6 +38,19 @@ class MainView(Tk):
         self.__label.grid(row=0, column=3, sticky = N + E)
         self.grid_rowconfigure(0, weight = True)
         self.grid_columnconfigure(0, weight = True)
+
+
+        self.__frame.bind("<space>", self.did_space_tap)
+        self.__frame.focus_set()
+        self.__frame.pack()
+
+    def did_space_tap(self, event):
+        #print("pressed")
+        self.__canvas.destroy()
+        self.__canvas = Canvas(self.__frame, width=self.Constants.width_pizarra, height=self.Constants.height_pizarra)
+        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__canvas.create_rectangle(0, 0, self.Constants.width_pizarra, self.Constants.height_pizarra, fill='white')
+
 
     def draw_line (self, initial_x, initial_y, data):
         vector = self.__controller.handle_data(data)
