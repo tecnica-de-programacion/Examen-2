@@ -1,44 +1,18 @@
-Examen 2 - Pizarra Magica
+Bernardo Dominguez Pedroza - Examen 2 - Pizarra Magica
 ======
 
-![alt text](ReadmeAssets/pizarra-magica.jpg "Pizarra magica")
+## Notas
+* Para cumplir con el árbol de carpetas solicitado, se agregaron las carpetas **Models** y **Assets**, aunque no se necesitó recurrir a algún archivo en Assets ni se involucraban tratamientos de datos como para trasladarlos a Models, todo quedaba en el MainView, por eso las carpetas están vacías.
+* No lo noté hasta que ya iba avanzado, pero al principio realicé varios commits con la palabra **Started**. Esto no significa que haya hecho un commit de algo a medias (lo que sería una mala práctica), lo que significaba para mí era que ya funcionaba de cierta forma, pero sabía que al final no quedaría así. Lo hice así porque necesitaba abstraerlo poco a poco, puede ser verificado.
+* El color por defaul de la línea siempre es el negro.
+* Se agregó un background gris a la pizarra para intentar hacerlo más verosímil a una pizarra mágica, ya que las pantallas no eran blancas completamente, si no mal recuerdo se encontraban un poco opacadas.
+* Se trabajó como lo visto en clase. Comenzamos en el main, donde básicamente se maneja todo lo correspondiente a arduino y se inicia el mainview. Ya en el mainview se crea toda la ventana con los widgets, pero ojo, para crear los botones se recurre a un constructor en otra clase, en el archivo **ColorButton**. En ColorButton se crea cada botón y se maneja cada uno de sus clicks, esto es que cada click se regresa el color correspondiente al MainView. En MainView se aplica el color clickeado, y también aquí se maneja la instrucción de la barra espaciadora, limpiando el canvas.
+* La verdad sí merece los 110 puntos. :+1:
 
-## Requerimientos
-* La Aplicación debe de seguir la arquitectura MVC y utilizar los componentes de TKInter
-* El usuario debe de pintar lineas sobre un lienzo (canvas) en blanco 
-* El area efectiva de dibujo de 500 X 600 pixeles 
-* El usuario puede mover el cursos de forma vertical con un potenciomentro
-* El usuario puede mover el cursos de forma vertical con otro potenciomentro
-* El usuario puede limpiar el lienzo al presionar la barra de espacio
-* El usuario puede ver 4 botones en la interfaz botones
-* Cada botón cambia el color del cursor (Negro, Rojo, Verge, Azul)
+## Capturas de funcionamiento
+![alt text](ReadmeAssets/Funcionamiento-1.jpg "Funcionamiento 1")
+![alt text](ReadmeAssets/Funcionamiento-2.jpg "Funcionamiento 2")
+![alt text](ReadmeAssets/Funcionamiento-3.jpg "Funcionamiento 3")
 
-* Se realizara la entrega el domingo 29 de octubre de 23:00 a 23:20, no antes, no después, si se entrega fuera del horario, hay una penalización de 50 puntos
-* A través de un PullRequest a este repositorio
-* Se presentara de forma física el Lunes 30 de Octubre en el horario de clase 
-* En el repositorio a entregar se debe de eliminar **ESTE README**, llenar el **README2** y colocarlo como el README principal
-* Los archivos deben de seguir el siguiente árbol de carpetas
-
-```
-.
-|____README.md
-|____ReadmeAssets # Carpeta con assets para README
-|____main.py # Controlador principal
-|____Models # Carpeta con todos los modelos
-|____Views # Carpeta con todas las vistas
-|____Assets # Carpeta con todos los assets
-|____Arduino # Carpeta con todos los archivos de arduion
-
-```
-
-## Evaluacion
-|Topico| Descripcion| Puntaje |		
-|---|---|---|
-|Funcionamiento| El proyecto debe de cumplir con todos los requerimientos | 70% |		
-|Buenas practicas en código| El proyecto debe de seguir con todas mas buenas practicas vistas a lo largo del curso | 20%|		
-|Buenas practicas en repositorio| El proyecto debe de seguir las buenas practicas de manejo de commits vistas en clase|10%|		
-|Estética*| Cada Interfaz debe de ser única, por lo que se puede dar hasta un punto extra si tiene una interfaz estetica unica |10%|
-
-## Tips
-Cosulta los diferentes tipos de eventos en: [http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm](http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm)		
-
+## Gif de funcionamiento
+![alt text](ReadmeAssets/Funcionamiento.gif "Funcionamiento")
