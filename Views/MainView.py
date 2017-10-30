@@ -34,27 +34,41 @@ class MainView(Tk):
         self.position_x = 0
         self.position_y = 0
 
-        self.position_x_2 = 0
-        self.position_y_2 = 0
-        self.contador = 0
         self.button_black = None
         self.button_green = None
         self.button_blue = None
         self.button_red= None
+
         self.color = self.create_buttons()
         self.create_main_window_drawing()
         self.x = 350
         self.y = 350
-        self.add = 5
 
     def create_drawing(self, horizontal, vertical):
         if self.lines is not None:
             self.canvas.delete(self.lines)
-        nueva_y = horizontal-300
-        nueva_x = vertical-250
-        print(nueva_x,nueva_y)
+        nueva_y = horizontal - 300
+        nueva_x = vertical - 250
+        adv= 1
+        print(nueva_y,nueva_x)
 
+        if -250 < nueva_x < 250:
+            pass
+        if 250 <= nueva_x <= 400:
+            self.canvas.create_line(self.x +adv, self.y, self.x + adv, self.y, fill=self.color, width=3)
+            self.x += adv
+        if -300 <= nueva_x <= -200:
+            self.canvas.create_line(self.x, self.y, self.x - adv, self.y, fill=self.color, width=3)
+            self.x -= adv
 
+        if -300 < nueva_y < 300:
+            pass
+        if 100 <= nueva_y <= 250:
+            self.canvas.create_line(self.x, self.y, self.x, self.y - adv, fill=self.color, width=3)
+            self.y -= adv
+        if -250 <= nueva_y <= -180:
+            self.canvas.create_line(self.x, self.y, self.x, self.y + adv, fill=self.color, width=3)
+            self.y += adv
 
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
