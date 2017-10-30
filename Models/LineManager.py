@@ -19,7 +19,7 @@ class LineManager():
         modify_coordinates = Coordinates(coordinates_value)
 
         if modify_coordinates.y_coordinate is None or modify_coordinates.x_coordinate is None:
-             return
+            return
 
         if self.__actual_x_coordinate is None and self.__actual_y_coordinate is None:
             self.__actual_x_coordinate = modify_coordinates.x_coordinate

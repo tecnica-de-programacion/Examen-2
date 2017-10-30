@@ -14,7 +14,7 @@ class MainView(Tk):
         magic_board_color = '#FAFAFA'
 
         @classmethod
-        def size (cls):
+        def size(cls):
             return '{}x{}'.format(cls.width, cls.height)
 
     def __init__(self, color_handler=None):
@@ -25,9 +25,6 @@ class MainView(Tk):
         self.minsize(width=self.Constants.width, height=self.Constants.height)
         self.configure(bg=self.Constants.border_color)
         self.grid_columnconfigure(0, weight=1)
-        #self.grid_rowconfigure(1, weight=1)
-
-        self.line_color = 'black'
 
         self.drawing_canvas_setup()
 
@@ -35,6 +32,8 @@ class MainView(Tk):
         self.title.grid(row=0, column=0)
 
         ButtonsArea(self, self.Constants.buttons_title, color_handler)
+
+
 
     def update_drawing(self, coordinates, color):
         print(coordinates.actual_x_coordinate, coordinates.actual_y_coordinate,
@@ -53,5 +52,4 @@ class MainView(Tk):
         self.__magic_board = Canvas(self, width=600, height=500, bg=self.Constants.magic_board_color)
         self.__magic_board.grid(row=1, column=0)
 
-    def button_clicked(self, event):
-        print('hola', event)
+
