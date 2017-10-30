@@ -1,4 +1,4 @@
-from tkinter import Tk, N, S, E, W, Label, Canvas, Button, StringVar, Menu
+from tkinter import Tk, N, S, E, W, Label,Canvas,    Menu
 
 class MainView(Tk):
 
@@ -8,6 +8,10 @@ class MainView(Tk):
         height = 600
         effective_area_w = 600
         effective_area_h = 500
+        space_x = 100
+        space_y = 50
+        start_x = 300
+        start_y = 250
         c_red = '#FF0000'
         c_blue = '#0000FF'
         c_yellow = '#FFFF00'
@@ -16,9 +20,9 @@ class MainView(Tk):
         c_white = '#FDFEFE'
         c_window = '#155287'
         c_draw = '#9BECFA'
-        space_x = 100
-        space_y = 50
         center = N + S + E + W
+        event_1 = "<space>"
+        delete = "all"
 
         @classmethod
         def size(cls):
@@ -33,8 +37,13 @@ class MainView(Tk):
         self.minsize(self.Constants.width, self.Constants.height)
         self.maxsize(self.Constants.width, self.Constants.height)
         self.color = self.Constants.c_black
+        self.x = self.Constants.start_x
+        self.y = self.Constants.start_y
+        self.bind(self.Constants.event_1, self.erase)
+        self.paint = None
 
-
+        self.__label = Label(text='Presiona espacio para reiniciar')
+        self.__label.place(x=10, y=10  )
         self.__draw_screen = Canvas(self, bg=self.Constants.c_draw, width=self.Constants.effective_area_w, height=self.Constants.effective_area_h)
         self.__draw_screen.place(x=self.Constants.space_x, y=self.Constants.space_y)
 
@@ -51,6 +60,9 @@ class MainView(Tk):
 
         self.__barra_Menu.add_cascade(label='Color', menu=self.__menu_Color)
         self.config(menu=self.__barra_Menu)
+
+
+
 
 
     def red(self):
@@ -71,6 +83,45 @@ class MainView(Tk):
     def white(self):
         self.color = self.Constants.c_white
         print(self.color)
+
+    def erase(self, event):
+        self.__draw_screen.delete(self,self.Constants.delete)
+        self.x = self.Constants.start_x
+        self.y = self.Constants.start_y
+
+
+    def drawing_function(self, x, y):
+        
+        if self.paint is not None:
+            pass
+        new_y = y - 300
+        new_x = x - 300
+        paso = 0.4
+        
+        if -300 <= new_x <= 0:
+            self.__draw_screen.create_line(self.Constants.start_x, self.Constants.start_y, self.Constants.start_x - paso, self.Constants.start_y, fill = self.color, width = 2)
+            self.Constants.start_x += paso
+
+        if 0 <= new_x <= 300:
+            self.__draw_screen.create_line(self.Constants.start_x, self.Constants.start_y, self.Constants.start_x + paso, self.Constants.start_y, fill = self.color, width =2)
+            self.Constants.start_x -= paso
+
+        if -300 <= new_y <= 0:
+            self.__draw_screen.create_line(self.Constants.start_x, self.Constants.start_y, self.Constants.start_x, self.Constants.start_y - paso, fill = self.color, width = 2)
+            self.Constants.start_y += paso
+
+        if  0 <= new_y <= 300:
+            self.__draw_screen.create_line(self.Constants.start_x, self.Constants.start_y, self.Constants.start_x, self.Constants.start_y + paso, fill = self.color, width = 2)
+            self.Constants.start_y -= paso
+
+        print(new_x, new_y)
+
+
+
+
+
+
+
 
 
 
