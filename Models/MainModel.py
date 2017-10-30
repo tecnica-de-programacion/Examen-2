@@ -6,7 +6,7 @@ class MainModel():
 
     def handle_data(self,data):
         tupla = data.strip(' \n\r').split(' ')
-        #print(tupla)
+        print(tupla)
         x_value = int(tupla[0])
         y_value = int(tupla[1])
         coordinates = (x_value,y_value)
