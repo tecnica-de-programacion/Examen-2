@@ -1,5 +1,6 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W, Button
+from tkinter import Tk, Canvas, PhotoImage
 from Views.ColorButton import ColorButton
+from Views.ViewEmoji import ViewEmoji
 
 class MainView(Tk):
     class Constants:
@@ -10,13 +11,18 @@ class MainView(Tk):
         height = 650
         left_width = 100
         line_width = 2
-        bg = '#8f0595'
+        image_with = 12
+        Black_image = "Assets/Black.png"
+        Blue_image = "Assets/Blue.png"
+        Red_image = "Assets/Red.png"
+        Green_image = "Assets/Green.png"
+        bg = '#510082'
         event_space = '<space>'
         buttons_width = 750
-        black_button_y = 150
+        black_button_y = 145
         red_button_y = 250
-        green_button_y = 350
-        blue_button_y = 450
+        green_button_y = 355
+        blue_button_y = 460
         Black = "#000000"
         Blue = '#0000bb'
         Red = "#ff0000"
@@ -46,14 +52,20 @@ class MainView(Tk):
                                height=self.Constants.drawing_screen_height)
         self.__canvas.place(x=self.Constants.left_width,
                             y=(self.Constants.height - self.Constants.drawing_screen_height) / 2)
+        self.__black_image = PhotoImage(file = self.Constants.Black_image)
         self.__black_button = ColorButton(self, self.Constants.buttons_width, self.Constants.black_button_y,
-                                          self.Constants.Black, action=self.__did_button_tap)
+                                          self.Constants.Black, self.__black_image , action=self.__did_button_tap)
+        self.__red_image = PhotoImage(file=self.Constants.Red_image)
         self.__red_button = ColorButton(self, self.Constants.buttons_width, self.Constants.red_button_y,
-                                        self.Constants.Red, action=self.__did_button_tap)
+                                        self.Constants.Red, self.__red_image, action=self.__did_button_tap)
+        self.__blue_image = PhotoImage(file=self.Constants.Blue_image)
         self.__blue_button = ColorButton(self, self.Constants.buttons_width, self.Constants.blue_button_y,
-                                         self.Constants.Blue, action=self.__did_button_tap)
+                                         self.Constants.Blue, self.__blue_image, action=self.__did_button_tap)
+        self.__green_image = PhotoImage(file=self.Constants.Green_image)
         self.__green_button = ColorButton(self, self.Constants.buttons_width, self.Constants.green_button_y,
-                                          self.Constants.Green, action=self.__did_button_tap)
+                                          self.Constants.Green, self.__green_image, action=self.__did_button_tap)
+        self.__image = ViewEmoji(self)
+        self.__image.place(x = self.Constants.buttons_width, y = self.Constants.image_with)
 
     def __did_button_tap(self, color):
         if self.__tap_button_handler is None: return
@@ -65,9 +77,17 @@ class MainView(Tk):
 
     def update_canvas(self, x, y):
         if self.__coordinates:
-            self.__canvas.create_line(self.__coordinates[-2], self.__coordinates[-1], x, y, width = self.Constants.line_width, fill = self.ChangeColor.line_color)
-        self.__coordinates.append(x)
-        self.__coordinates.append(y)
+            self.__canvas.create_line(self.__coordinates[0], self.__coordinates[1], x, y, width = self.Constants.line_width, fill = self.ChangeColor.line_color)
+            if self.__coordinates[0] == x and self.__coordinates[1] == y:
+                self.__image.change_image(False)
+            else:
+                self.__image.change_image(True)
+            self.__coordinates[0] = x
+            self.__coordinates[1] = y
+        else:
+            self.__coordinates.append(x)
+            self.__coordinates.append(y)
+
         self.bind(self.Constants.event_space, self.__did_space_tap)
 
     def clean_screen(self):
@@ -75,4 +95,5 @@ class MainView(Tk):
                                height=self.Constants.drawing_screen_height)
         self.__canvas.place(x=self.Constants.left_width,
                             y=(self.Constants.height - self.Constants.drawing_screen_height) / 2)
+        self.__image.change_image(None)
 
