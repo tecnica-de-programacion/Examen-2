@@ -10,12 +10,12 @@ class Coordinates:
     def x_coordinate(self):
         try:
             return int(self.__x_coordinate)
-        except:
+        except ValueError:
             return None
 
     @property
     def y_coordinate(self):
         try:
             return int(self.__y_coordinate)
-        except:
+        except ValueError:
             return None
