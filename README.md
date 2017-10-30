@@ -1,44 +1,19 @@
-Examen 2 - Pizarra Magica
+Vasquez Nuñez Víctor Hugo - Examen 2 - Pizarra Magica
 ======
+![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
-![alt text](ReadmeAssets/pizarra-magica.jpg "Pizarra magica")
+## Nota
+Para iniciar el programa se presiona run desde Pycharm, de no correr a la primera se debe vovler a presionar
+los potenciometros se pueden movel juntos o separados es indistinto
+al presionar un boton podras cambiar el color de la linea, el fondo de la pantalla indica el color que se esta usando
+el boton "change figure" permite intercambiar entre dibular con circulos o una raya continua, al estar en modo circulo
+y volver al modo linea, tu punto de inicio y final se uniran con una linea recta
+se anexa una imagen de como deben conectarse los potenciometros
 
-## Requerimientos
-* La Aplicación debe de seguir la arquitectura MVC y utilizar los componentes de TKInter
-* El usuario debe de pintar lineas sobre un lienzo (canvas) en blanco 
-* El area efectiva de dibujo de 500 X 600 pixeles 
-* El usuario puede mover el cursos de forma vertical con un potenciomentro
-* El usuario puede mover el cursos de forma vertical con otro potenciomentro
-* El usuario puede limpiar el lienzo al presionar la barra de espacio
-* El usuario puede ver 4 botones en la interfaz botones
-* Cada botón cambia el color del cursor (Negro, Rojo, Verge, Azul)
+## Camputas de funcionameinto
+Si el programa no abre a la primera que se de de run, debe presionar denuevo, los potenciometros son de 10 k y se toma la salida de
+5 volts, la tierra es compartida, el potenciometro de la entrada A0 mueve Horizontalmente
 
-* Se realizara la entrega el domingo 29 de octubre de 23:00 a 23:20, no antes, no después, si se entrega fuera del horario, hay una penalización de 50 puntos
-* A través de un PullRequest a este repositorio
-* Se presentara de forma física el Lunes 30 de Octubre en el horario de clase 
-* En el repositorio a entregar se debe de eliminar **ESTE README**, llenar el **README2** y colocarlo como el README principal
-* Los archivos deben de seguir el siguiente árbol de carpetas
 
-```
-.
-|____README.md
-|____ReadmeAssets # Carpeta con assets para README
-|____main.py # Controlador principal
-|____Models # Carpeta con todos los modelos
-|____Views # Carpeta con todas las vistas
-|____Assets # Carpeta con todos los assets
-|____Arduino # Carpeta con todos los archivos de arduion
-
-```
-
-## Evaluacion
-|Topico| Descripcion| Puntaje |		
-|---|---|---|
-|Funcionamiento| El proyecto debe de cumplir con todos los requerimientos | 70% |		
-|Buenas practicas en código| El proyecto debe de seguir con todas mas buenas practicas vistas a lo largo del curso | 20%|		
-|Buenas practicas en repositorio| El proyecto debe de seguir las buenas practicas de manejo de commits vistas en clase|10%|		
-|Estética*| Cada Interfaz debe de ser única, por lo que se puede dar hasta un punto extra si tiene una interfaz estetica unica |10%|
-
-## Tips
-Cosulta los diferentes tipos de eventos en: [http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm](http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm)		
-
+## Gif de fucnionamiento
+![alt text](Assets/interaccionuser.gif "Gif de Usuario")
