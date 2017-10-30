@@ -23,4 +23,4 @@ realizar el examen, sí se pudo y de la manera que se pedía.
 ![alt text](ReadmeAssets/mix.jpg "All the pencils")
 
 ## Gif de funcionamiento
-![alt text](ReadmeAssets/magic_board.gif "Magic Board running"
+![alt text](ReadmeAssets/magic_board.gif "Magic Board running")
