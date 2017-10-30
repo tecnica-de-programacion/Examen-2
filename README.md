@@ -18,4 +18,5 @@ Cuando se limpia la pantalla la pantalla aparece al igual que en el inicio:
 ![alt text](ReadmeAssets/Clean_screen.png "Clean")
 
 ## Gif de fucnionamiento
-Aqui agregar un gif del fucnionameinto completo, donde se vea aun usuario interactuando 
+Funcionamiento
+![alt text](ReadmeAssets/Program_running.gif "Running")
