@@ -22,7 +22,8 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.__new_position=[]
         self.__line = None
-        self.__canvas = Canvas(self, width = self.Constants.widthC , height=self.Constants.heigthC,bg="white").place(x=60,y=30)
+        self.__canvas = Canvas(self, width = self.Constants.widthC , height=self.Constants.heigthC,bg="white")
+        self.__canvas.place(x=60,y=30)
         self.__botonA=Button(self,text="Blue",bg="blue").place(x=700,y=30)
         self.__botonB = Button(self, text="Black", bg="black").place(x=3,y=30)
         self.__botonV= Button(self, text="Green", bg="green").place(x=3,y=120)
@@ -31,15 +32,13 @@ class MainView(Tk):
 
 
     def update_canvas(self,Xvalue,Yvalue):
-        #if self.__new_position:
-        if self.__line is not None:
-            self.__canvas.delete(self.__line)
-        self.__line= self.__canvas.create_line(0,Xvalue, Xvalue, Yvalue )
-            #self.__new_position[0]= Xvalue
-            #self.__new_position[1] = Yvalue
-        #else:
-            #self.__new_position.append(Xvalue)
-            #self.__new_position.append(Yvalue)
+        if self.__new_position:
+            self.__line= self.__canvas.create_line(self.__new_position[0],self.__new_position[1], Xvalue, Yvalue )
+            self.__new_position[0]= Xvalue
+            self.__new_position[1] = Yvalue
+        else:
+            self.__new_position.append(Xvalue)
+            self.__new_position.append(Yvalue)
 
 #def to_Blue(self):
     #self.Constants.pencil_color= "Blue"
