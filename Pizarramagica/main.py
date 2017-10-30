@@ -22,16 +22,14 @@ class MainApp():
 
     def __handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
-        Yvalue = int(clean_values[1])
-        Xvalue = int(clean_values[3])
-        self.__master.update_bar(Yvalue,Xvalue)
-
-
+        Xvalue = int (clean_values[1])
+        Yvalue = int (clean_values[3])
+        self.__master.update_canvas(Xvalue , Yvalue)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
         self.__handle_data(data)
-        self.__master.after(1, self.__update_clock)
+        self.__master.after(5, self.__update_clock)
 
     def __on_closing(self):
         self.__arduino.close()
