@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Label, Frame, N, S, E, W, Button
+from tkinter import Tk, Canvas, Label, Frame, N, S, E, W, Button, PhotoImage
 from Models.MainModel import MainModel
 from Views.ButtonsConstruct import Buttons
 
@@ -13,7 +13,6 @@ class MainView(Tk):
         center = N + S + E + W
         radio = 5
         width_line = 1
-
         h_button = 300
         color_line = "black"
 
@@ -41,6 +40,8 @@ class MainView(Tk):
         self.button1 = Button(self, text=" Change the color to green",background = "green",command=self.__change_colorg).place(x=520,
                                                                                         y=self.Constants.h_button
                                                                                          )
+
+
 
         self.Constants.h_button += 30
         self.button2 = Button(self, text="Change the color to red",command=self.__change_colorr).place(x=520, y=self.Constants.h_button

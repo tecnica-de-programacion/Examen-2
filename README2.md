@@ -1,12 +1,13 @@
-TU-NOBRE-AQUI - Examen 2 - Pizarra Magica
+Vasquez Nuñez Víctor Hugo - Examen 2 - Pizarra Magica
 ======
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
 ## Nota
-Aqui agregar alguna nota de funcionamiento del programa
 
 ## Camputas de funcionameinto
-Caputas de pantalla del programa
+Si el programa no abre a la primera que se de de run, debe presionar denuevo, los potenciometros son de 10 k y se toma la salida de
+5 volts, la tierra es compartida, el potenciometro de la entrada A0 mueve Horizontalmente
+
 
 ## Gif de fucnionamiento
-Aqui agregar un gif del fucnionameinto completo, donde se vea aun usuario interactuando 
+![alt text](ReadmeAssets/gif_usuario)
