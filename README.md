@@ -1,11 +1,13 @@
-Hern·ndez Castro Carlos Alexis - Examen 2 - Pizarra Magica
+Hern√°ndez Castro Carlos Alexis - Examen 2 - Pizarra Magica
 ======
 
 ## Nota
 El archivo main.py controla la creacion de la interfaz, dibujos y transferencia de datos.
 El archivo MainView.py crea todo lo que un usuario puede ver.
-En cuanto al menejo de los potenciometros, Èstos deben manipularse despacio ya que moverlos r·pido puede provocar
+En cuanto al menejo de los potenciometros, √©stos deben manipularse despacio ya que moverlos r√°pido puede provocar
 trazos incorrectos.
+
+Por error sub√≠ una carpeta adicional con el archivo de arduino, pero no pude eliminarla.
 
 ## Capturas de funcionamiento
 ![alt text](ReadmeAssets/Interfaz.JPG "Interfaz")
