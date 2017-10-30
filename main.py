@@ -21,6 +21,7 @@ class MainApp ():
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.__initial_position = False
         self.__update_clock()
+        self.__color = None
 
 
     def run(self):

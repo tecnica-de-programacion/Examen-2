@@ -23,6 +23,7 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.minsize(self.Constants.width, self.Constants.heigth)
         self.maxsize(width=self.Constants.width, height=self.Constants.heigth)
+        self.tapped_color = False
         self.configure_ui()
         self.configure_grid()
 
@@ -41,6 +42,7 @@ class MainView(Tk):
 
         self.__ColorMenuView = ColorMenuView(self)
 
+
     def configure_grid(self):
         self.__canvas.grid(row=0, column=0, sticky=self.Constants.center, rowspan = self.Constants.span)
         self.__label.grid(row=0, column = 1, sticky = self.Constants.center)
@@ -49,5 +51,5 @@ class MainView(Tk):
         self.__label.configure(text = coordinates)
 
     def update_line(self, coordinates):
-        self.__canvas.create_line(coordinates)
+        self.__canvas.create_line(coordinates, fill = self.__ColorMenuView.color)
 

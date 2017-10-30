@@ -11,36 +11,29 @@ class ColorButton(Button):
     class Event:
         click = "<Button-1>"
 
-    def __init__(self, master, key, action=None):
+    def __init__(self, master, key, action = None):
         super().__init__(master)
         self.__action = action
-        self.__key = key
+        self.key = key
         self.configure_image()
         self.color = None
-        self.bind(self.Event.click, self.change_color)
+        self.bind(self.Event.click, self.__did_tap)
 
 
     def configure_image(self):
-        if self.__key == "Red":
+        if self.key == "red":
             self.__image = PhotoImage(file = self.Constants.Red)
-        elif self.__key == "Blue":
+        elif self.key == "blue":
             self.__image = PhotoImage(file=self.Constants.Blue)
-        elif self.__key == "Black":
+        elif self.key == "black":
             self.__image = PhotoImage(file=self.Constants.Black)
-        elif self.__key == "Green":
+        elif self.key == "green":
             self.__image = PhotoImage(file=self.Constants.Green)
         self.configure(image= self.__image)
 
     def position(self, row, column):
         self.grid(row=row, column=column, sticky = self.Constants.center)
 
-    def change_color(self, event):
-        if self.__key == "Red":
-            self.color ='cambia RED'
-        elif self.__key == "Blue":
-            self.color = 'cambia BLUE'
-        elif self.__key == "Black":
-            self.color = 'cambia BLACK'
-        elif self.__key == "Green":
-            self.color = 'cambia GREEN'
-        print(self.color)
+    def __did_tap(self, event):
+        if self.__action is None: return
+        self.__action(self.key)
