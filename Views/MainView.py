@@ -46,13 +46,13 @@ class MainView(Tk):
         self.__frame.focus_set()
         self.__frame.pack()
 
-        self.button_green = Button(self, text=" Green", font = ('Century Gothic',7), command = self.__green_color).place(x=self.Constants.distance,y=self.Constants.position)
-        self.Constants.distance += 70
-        self.button_red = Button(self, text="Red", font = ('Century Gothic',7), command = self.__red_color).place(x=self.Constants.distance,y=self.Constants.position)
+        self.button_green = Button(self, text="Green", font = ('Century Gothic',7),bg = 'green', command = self.__green_color).place(x=self.Constants.distance,y=self.Constants.position)
         self.Constants.distance += 50
-        self.button_blue = Button(self, text=" Bue", font = ('Century Gothic',7), command = self.__blue_color).place(x=self.Constants.distance,y=self.Constants.position)
+        self.button_red = Button(self, text="   Red  ", font = ('Century Gothic',7),bg = 'red' , command = self.__red_color).place(x=self.Constants.distance,y=self.Constants.position)
         self.Constants.distance += 50
-        self.button_black = Button(self, text="Black", font = ('Century Gothic',7), command = self.__dark_color).place(x=self.Constants.distance,y=self.Constants.position)
+        self.button_blue = Button(self, text="  Blue  ", font = ('Century Gothic',7),bg= 'blue' , command = self.__blue_color).place(x=self.Constants.distance,y=self.Constants.position)
+        self.Constants.distance += 50
+        self.button_black = Button(self, text="Black", font = ('Century Gothic',7),bg = 'black', command = self.__dark_color).place(x=self.Constants.distance,y=self.Constants.position)
 
     def did_space_tap(self, event):
         #print("pressed")
