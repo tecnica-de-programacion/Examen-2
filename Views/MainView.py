@@ -7,13 +7,13 @@ class MainView(Tk):
     class Constants:
         title = "--Pizarron magico--"
         height = 630
-        width = 730
+        width = 650
         width_canvas = 500
         height_canvas = 600
         center = N + S + E + W
-        radio = 1
-        width_line = 1
-        h_button = 300
+        radio = 3
+        width_line = 2
+        h_button = 100
         color_line = "black"
 
 
@@ -44,16 +44,16 @@ class MainView(Tk):
 
 
 
-        self.Constants.h_button += 30
+        self.Constants.h_button += 100
         self.button2 = Button(self, text="Use color red",command=self.__change_colorr).place(x=520, y=self.Constants.h_button
                                                                                       )
-        self.Constants.h_button += 30
+        self.Constants.h_button += 100
         self.button3 = Button(self, text=" Use color blue",command=self.__change_colorb).place(x=520, y=self.Constants.h_button
                                                                                        )
-        self.Constants.h_button += 30
+        self.Constants.h_button += 100
         self.button4 = Button(self, text="Use color black",bg = "black",command=self.__change_colorbl).place(x=520,
                                                                                         y=self.Constants.h_button)
-        self.Constants.h_button += 30
+        self.Constants.h_button += 100
         self.button5 = Button(self, text="Change figure ", command=self.__change_figure).place(x=520,
                                                                                                            y=self.Constants.h_button
                                                                                                            )
@@ -90,7 +90,7 @@ class MainView(Tk):
                 return coordinates_tupla
         else:
             self.__canvas.create_oval(x - self.Constants.radio, y - self.Constants.radio, x + self.Constants.radio,
-                                      y + self.Constants.radio, fill="red")
+                                      y + self.Constants.radio, fill=self.Constants.color_line)
 
             return None
 
