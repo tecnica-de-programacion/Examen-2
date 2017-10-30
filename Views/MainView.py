@@ -14,6 +14,9 @@ class MainView(Tk):
         def size(cls):
             return "{}x{}".format(cls.width, cls.heigth)
 
+    class Events:
+        space = '<space>'
+
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
@@ -21,8 +24,9 @@ class MainView(Tk):
         self.maxsize(self.Constants.width, self.Constants.heigth)
         self.minsize(self.Constants.width, self.Constants.heigth)
         self.__canvas = Canvas(self, width=self.Constants.width, height=self.Constants.heigth)
-        self.__canvas.grid(row=0, column=0, sticky=self.Constants.center)
+        self.__canvas.grid(row=0, column=1, sticky=self.Constants.center)
         self.__draw_window = self.__canvas.create_rectangle(200, 20, 800, 520, fill="silver")
+        self.bind(self.Events.space, self.__erase_all)
 
     def update_line(self, value_x, value_y):
         if self.Constants.before_x == 0:
@@ -49,4 +53,8 @@ class MainView(Tk):
 
     def update_line_y(self, x1, y1, x2, y2):
         self.__line_y = self.__canvas.create_line(x1,y1,x2,y2, fill="red")
+
+    def __erase_all(self, event):
+        self.__canvas.delete("all")
+        self.__draw_window = self.__canvas.create_rectangle(200, 20, 800, 520, fill="silver")
 
