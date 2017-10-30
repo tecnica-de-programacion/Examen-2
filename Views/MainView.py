@@ -11,10 +11,11 @@ class MainView(Tk):
         width_canvas = 500
         height_canvas = 600
         center = N + S + E + W
-        radio = 5
+        radio = 1
         width_line = 1
         h_button = 300
         color_line = "black"
+
 
         @classmethod
         def size(cls):
@@ -25,9 +26,9 @@ class MainView(Tk):
         super().__init__()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
+        self.__figure = "lines"
 
-
-        self.configure(background="dark red")
+        self.configure(background= "dark red")
 
         self.__controller = MainModel()
         self.maxsize(self.Constants.width, self.Constants.height)
@@ -37,22 +38,26 @@ class MainView(Tk):
         self.__canvas.place(x=10, y=10)
 
 
-        self.button1 = Button(self, text=" Change the color to green",background = "green",command=self.__change_colorg).place(x=520,
+        self.button1 = Button(self, text=" Use color green",background = "green",command=self.__change_colorg).place(x=520,
                                                                                         y=self.Constants.h_button
                                                                                          )
 
 
 
         self.Constants.h_button += 30
-        self.button2 = Button(self, text="Change the color to red",command=self.__change_colorr).place(x=520, y=self.Constants.h_button
+        self.button2 = Button(self, text="Use color red",command=self.__change_colorr).place(x=520, y=self.Constants.h_button
                                                                                       )
         self.Constants.h_button += 30
-        self.button3 = Button(self, text=" Change the color to blue",command=self.__change_colorb).place(x=520, y=self.Constants.h_button
+        self.button3 = Button(self, text=" Use color blue",command=self.__change_colorb).place(x=520, y=self.Constants.h_button
                                                                                        )
         self.Constants.h_button += 30
-        self.button4 = Button(self, text="Change the color to black",command=self.__change_colorbl).place(x=520,
-                                                                                        y=self.Constants.h_button
-                                                                                        )
+        self.button4 = Button(self, text="Use color black",bg = "black",command=self.__change_colorbl).place(x=520,
+                                                                                        y=self.Constants.h_button)
+        self.Constants.h_button += 30
+        self.button5 = Button(self, text="Change figure ", command=self.__change_figure).place(x=520,
+                                                                                                           y=self.Constants.h_button
+                                                                                                           )
+
 
 
 
@@ -74,27 +79,39 @@ class MainView(Tk):
 
 
 
-    def draw_figure(self, last_x, last_y, data, figure):
+    def draw_figure(self, last_x, last_y, data):
         coordinates_tupla = self.__controller.handle_data(data)
         x = coordinates_tupla[0]
         y = coordinates_tupla[1]
-        if figure == "lines":
+        print(coordinates_tupla)
+        if self.__figure == "lines":
             if abs(x - int(last_x)) > 5 or abs(y - int(last_y)) > 5:
                 self.__canvas.create_line(last_x, last_y, x, y, fill=self.Constants.color_line,width=self.Constants.width_line)
                 return coordinates_tupla
         else:
             self.__canvas.create_oval(x - self.Constants.radio, y - self.Constants.radio, x + self.Constants.radio,
                                       y + self.Constants.radio, fill="red")
+
             return None
 
     def __change_colorg(self):
         self.Constants.color_line = "green"
+        self.configure(background="dark " + self.Constants.color_line)
 
     def __change_colorr(self):
         self.Constants.color_line = "red"
+        self.configure(background="dark "+ self.Constants.color_line)
 
     def __change_colorb(self):
         self.Constants.color_line = "blue"
+        self.configure(background="dark " + self.Constants.color_line)
 
     def __change_colorbl(self):
         self.Constants.color_line = "black"
+        self.configure(background=self.Constants.color_line)
+    def __change_figure(self):
+        self.space_taped("<space>")
+        if self.__figure == "lines":
+            self.__figure = "circles"
+        else:
+            self.__figure = "lines"
