@@ -16,4 +16,4 @@ Si el programa no abre a la primera que se de de run, debe presionar denuevo, lo
 
 
 ## Gif de fucnionamiento
-![alt text](Assets/interaccionuser.gif)
+![alt text](Assets/interaccionuser.gif "Gif de Usuario")
