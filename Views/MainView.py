@@ -16,8 +16,8 @@ class MainView(Tk):
         color_4 = "Blue"
         color_5 = "Yellow"
         color_6 = "Purple"
-        posicion_x_main = 350
-        posicion_y_main = 350
+        posicion_x_main = 100
+        posicion_y_main = 600
         when_click = "<Button-1>"
 
         @classmethod
@@ -56,24 +56,24 @@ class MainView(Tk):
         if self.lines is not None:
             self.canvas.delete(self.lines)
         new_position_y = vertical - 300
-        new_position_x = horizontal - 250
+        new_position_x = horizontal - 300
         print(new_position_x,new_position_y)
 
-        if 0 <= new_position_x <= 250:
-            self.canvas.create_line(self.position_x, self.position_y, self.position_x + self.Constants.advance, self.position_y, fill = self.color, width = self.Constants.width_line)
+        if -300 <= new_position_x <= 0:
+            self.canvas.create_line(self.position_x, self.position_y, self.position_x - self.Constants.advance, self.position_y, fill = self.color, width = self.Constants.width_line)
             self.position_x += self.Constants.advance
 
-        if -300 <= new_position_x <= 250:
-            self.canvas.create_line(self.position_x, self.position_y, self.position_x - self.Constants.advance, self.position_y, fill = self.color, width = self.Constants.width_line)
+        if 0 <= new_position_x <= 300:
+            self.canvas.create_line(self.position_x, self.position_y, self.position_x + self.Constants.advance, self.position_y, fill = self.color, width = self.Constants.width_line)
             self.position_x -= self.Constants.advance
 
-        if 100 <= new_position_y <= 300:
+        if -300 <= new_position_y <= 0:
             self.canvas.create_line(self.position_x, self.position_y, self.position_x, self.position_y - self.Constants.advance, fill = self.color, width = self.Constants.width_line)
-            self.position_y -= self.Constants.advance
-
-        if -250 <= new_position_y <= -180:
-            self.canvas.create_line(self.position_x, self.position_y, self.position_x, self.position_y + self.Constants.advance, fill = self.color, width = self.Constants.width_line)
             self.position_y += self.Constants.advance
+
+        if  0 <= new_position_y <= 300:
+            self.canvas.create_line(self.position_x, self.position_y, self.position_x, self.position_y + self.Constants.advance, fill = self.color, width = self.Constants.width_line)
+            self.position_y -= self.Constants.advance
 
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
