@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c791ff-e82a-44ce-ba6a-7aa104de43b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/MainView.py" afterPath="$PROJECT_DIR$/Views/MainView.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/BoardBrain.py" afterPath="$PROJECT_DIR$/Models/BoardBrain.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,14 +36,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainView.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainView.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/MainView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-314">
-              <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+            <state relative-caret-position="636">
+              <caret line="39" column="94" lean-forward="false" selection-start-line="39" selection-start-column="94" selection-end-line="39" selection-end-column="94" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardBrain.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Models/BoardBrain.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,6 +87,7 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Views/DrawBoard.py" />
         <option value="$PROJECT_DIR$/Views/MainView.py" />
+        <option value="$PROJECT_DIR$/Models/BoardBrain.py" />
       </list>
     </option>
   </component>
@@ -223,11 +235,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/MainView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-314">
-          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        <state relative-caret-position="636">
+          <caret line="39" column="94" lean-forward="false" selection-start-line="39" selection-start-column="94" selection-end-line="39" selection-end-column="94" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/BoardBrain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
