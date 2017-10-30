@@ -19,7 +19,9 @@ class MainView(Tk):
         posicion_x_main = 100
         posicion_y_main = 600
         when_click = "<Button-1>"
-        clean_window = "<space>"
+
+        class Events:
+            clean_window = "<space>"
 
         @classmethod
         def size(cls):
@@ -33,7 +35,7 @@ class MainView(Tk):
         self.maxsize(self.Constants.width_outside,self.Constants.heigth_outside)
         self.lines = None
         self.label = Label(self)
-        self.close_drawing = ""
+        self.close_drawing = None
 
         self.canvas = Canvas(self, width = self.Constants.width_inside, height = self.Constants.height_inside)
         self.label.grid(row = 0, column = 3, sticky = W)
@@ -47,16 +49,13 @@ class MainView(Tk):
         self.button_black = None
         self.button_green = None
         self.button_blue = None
-        self.button_red= None
+        self.button_red = None
         self.button_yellow = None
         self.button_purple = None
 
         self.color = self.create_buttons()
         self.create_main_window_drawing()
-        
-        if self.close_drawing == self.Constants.clean_window:
-            self.canvas.delete("all")
-            self.create_main_window_drawing()
+        self.bind(self.Constants.Events.clean_window, self.clean_window)
 
     def create_drawing(self, horizontal, vertical):
         if self.lines is not None:
@@ -81,8 +80,6 @@ class MainView(Tk):
             self.canvas.create_line(self.position_x, self.position_y, self.position_x, self.position_y + self.Constants.advance, fill = self.color, width = self.Constants.width_line)
             self.position_y -= self.Constants.advance
 
-
-
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
 
@@ -104,5 +101,9 @@ class MainView(Tk):
         self.color = newcolor
         print(self.color)
         return self.color
+    def clean_window(self, event):
+        self.canvas.delete("all")
+        self.create_main_window_drawing()
+        self.create_buttons()
 
 
