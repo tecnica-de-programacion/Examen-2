@@ -1,8 +1,5 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W
-from Views.BlackButton import BlackButton
-from Views.BlueButton import BlueButton
-from Views.RedButton import RedButton
-from Views.GreenButton import GreenButton
+from tkinter import Tk, Canvas, Label, N, S, E, W, PhotoImage, Button
+
 class MainView(Tk):
 
     class Constants:
@@ -12,8 +9,14 @@ class MainView(Tk):
         canvas_width = 600
         center = N + S + E + W
 
-        screen_height = 10000
-        screen_width = 10000
+        black_on = "Assets/black_button_on.ppm"
+
+        event = "<Button-1>"
+
+        color = "Black"
+
+        screen_height = 600
+        screen_width = 600
 
         horizontal_position = 0
         vertical_position = 0
@@ -27,7 +30,7 @@ class MainView(Tk):
             cls.horizontal_position = new_horizontal_position
             cls.vertical_position = new_vertical_position
 
-    def __init__(self, tap_color_handler = None):
+    def __init__(self):
         super().__init__()
 
         self.title(self.Constants.title)
@@ -37,26 +40,38 @@ class MainView(Tk):
         self.__canvas = Canvas(self, width = self.Constants.canvas_width, height = self.Constants.canvas_height)
         self.__canvas.bind("<Key>", self.__clean_canvas)
         self.__canvas.bind("<Button-1>", self.__did_tapped_on_canvas)
-        self.__canvas.grid(row = 1 , column = 2, sticky = self.Constants.center)
+        self.__canvas.grid(row = 0 , column = 0, sticky = self.Constants.center)
 
-        self.__black_button = BlackButton(self)
-        self.__black_button.grid(row = 2, column = 0, sticky = self.Constants.center)
+        self.__black = Button(self, command = self.__black_color, text = "Black")
+        self.__black.grid(row = 1, column = 0, sticky = self.Constants.center)
 
-        self.__blue_button = BlueButton(self)
-        self.__blue_button.grid(row = 2, column = 1, sticky = self.Constants.center)
+        self.__blue_button = Button(self, command = self.__blue_color, text = "Blue")
+        self.__blue_button.grid(row = 2, column = 0, sticky = self.Constants.center)
 
-        self.__red_button = RedButton(self)
-        self.__red_button.grid(row = 2, column = 3, sticky = self.Constants.center)
+        self.__red_button = Button(self, command = self.__red_color, text = "Red")
+        self.__red_button.grid(row = 3, column = 0, sticky = self.Constants.center)
 
-        self.__green_button = GreenButton(self)
-        self.__green_button.grid(row = 2, column = 4, sticky = self.Constants.center)
+        self.__green_button = Button(self, command = self.__green_color, text = "Green")
+        self.__green_button.grid(row = 4, column = 0, sticky = self.Constants.center)
 
+        self.grid_rowconfigure(0, weight=True)
+        self.grid_columnconfigure(0, weight=True)
 
+    def __blue_color(self):
+        self.Constants.color = "Blue"
+
+    def __black_color(self):
+        self.Constants.color = "Black"
+
+    def __red_color(self):
+        self.Constants.color = "Red"
+
+    def __green_color(self):
+        self.Constants.color = "Green"
 
     def drawing_line(self, horizontal_position, vertical_position):
-        print("Horizontal: ", horizontal_position, "Vertical: ", vertical_position)
-        if self.__line == None: self.__line = self.__canvas.create_line( 0 , 0 , 0 , 0 ,fill = "#7d5692", width = 0)
-        else: self.__line = self.__canvas.create_line( self.Constants.horizontal_position ,self.Constants.canvas_height - self.Constants.vertical_position , horizontal_position ,self.Constants.canvas_height - vertical_position ,fill = "#7d5692", width = 1)
+        if self.__line == None: self.__line = self.__canvas.create_line( 0 , 0 , 0 , 0 ,fill = self.Constants.color, width = 0)
+        else: self.__line = self.__canvas.create_line( self.Constants.horizontal_position ,self.Constants.canvas_height - self.Constants.vertical_position , horizontal_position ,self.Constants.canvas_height - vertical_position ,fill = self.Constants.color, width = 1)
 
     def __clean_canvas(self, event):
         if repr(event.char) == "' '":
