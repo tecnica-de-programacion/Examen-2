@@ -1,5 +1,5 @@
 from tkinter import Tk, Canvas, Label, N, S, E, W
-
+from Views.BlackButton import BlackButton
 class MainView(Tk):
 
     class Constants:
@@ -31,11 +31,13 @@ class MainView(Tk):
         self.geometry(self.Constants.size())
         self.__line = None
 
-
         self.__canvas = Canvas(self, width = self.Constants.canvas_width, height = self.Constants.canvas_height)
         self.__canvas.bind("<Key>", self.__clean_canvas)
         self.__canvas.bind("<Button-1>", self.__did_tapped_on_canvas)
         self.__canvas.grid(row = 1 , column = 2, sticky = self.Constants.center)
+
+        self.__black_button = BlackButton(self)
+        self.__black_button.grid(row = 2, column = 3, sticky = self.Constants.center)
 
     def drawing_line(self, horizontal_position, vertical_position):
         print("Horizontal: ", horizontal_position, "Vertical: ", vertical_position)
