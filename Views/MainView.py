@@ -8,7 +8,7 @@ class MainView(Tk):
         title = "Board"
         canvas_height = 500
         canvas_width = 600
-        canvas_color = "salmon"
+        canvas_color = "grey"
         height = 619
         width = 725
         pokemon_width = 125
@@ -36,14 +36,14 @@ class MainView(Tk):
         self.__configure_UI()
 
     def __configure_grid(self):
-        for row in range(0,5):
+        for row in range(0, 5):
             self.grid_rowconfigure(row, weight=True)
         self.grid_columnconfigure(0, weight=True, minsize=self.Constants.canvas_width)
         self.grid_columnconfigure(1, weight=True, minsize=self.Constants.pokemon_width)
 
     def __configure_UI(self):
         self.__canvas = Canvas(self, width=self.Constants.canvas_width, height=self.Constants.canvas_height)
-        self.__canvas.grid(row=1, column=0,  rowspan=500, sticky=self.Constants.center)
+        self.__canvas.grid(row=1, column=0, rowspan=500, sticky=self.Constants.center)
         self.__canvas.create_rectangle(0, 0, 600, 500, fill=self.Constants.canvas_color)
 
         self.__title_image = PhotoImage(file=self.Constants.title_file)
