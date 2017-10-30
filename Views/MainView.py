@@ -19,6 +19,7 @@ class MainView(Tk):
         posicion_x_main = 100
         posicion_y_main = 600
         when_click = "<Button-1>"
+        clean_window = "<space>"
 
         @classmethod
         def size(cls):
@@ -32,6 +33,7 @@ class MainView(Tk):
         self.maxsize(self.Constants.width_outside,self.Constants.heigth_outside)
         self.lines = None
         self.label = Label(self)
+        self.close_drawing = ""
 
         self.canvas = Canvas(self, width = self.Constants.width_inside, height = self.Constants.height_inside)
         self.label.grid(row = 0, column = 3, sticky = W)
@@ -51,6 +53,10 @@ class MainView(Tk):
 
         self.color = self.create_buttons()
         self.create_main_window_drawing()
+        
+        if self.close_drawing == self.Constants.clean_window:
+            self.canvas.delete("all")
+            self.create_main_window_drawing()
 
     def create_drawing(self, horizontal, vertical):
         if self.lines is not None:
@@ -74,6 +80,8 @@ class MainView(Tk):
         if  0 <= new_position_y <= 300:
             self.canvas.create_line(self.position_x, self.position_y, self.position_x, self.position_y + self.Constants.advance, fill = self.color, width = self.Constants.width_line)
             self.position_y -= self.Constants.advance
+
+
 
     def create_main_window_drawing(self):
         self.canvas.create_rectangle(100,100,600,600, fill = "white")
