@@ -4,9 +4,9 @@ class MainView(Tk):
 
     class Constants:
 
-        title = "Etch a Sketch 2017 /,,/"
+        title = "Etch a Sketch"
         canvas_height = 500
-        canvas_width = 600
+        canvas_wid  th = 600
         center = N + S + E + W
 
         black_on = "Assets/black_button_on.ppm"
