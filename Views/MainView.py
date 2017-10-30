@@ -1,4 +1,5 @@
 from tkinter import Tk, N, S, E, W
+from Views.DrawBoard import DrawBoard
 
 class MainView(Tk):
 
@@ -22,7 +23,11 @@ class MainView(Tk):
         self.configure(bg = '#ff0000')
         self.resizable(width = False, height = False)
 
+        self.__configure_ui()
         self.__configure_grid()
+
+    def __configure_ui(self):
+        self.__board = DrawBoard(self, self.Constants.board_height, self.Constants.board_width)
 
     def __configure_grid(self):
         self.grid_rowconfigure(0, minsize = self.Constants.border)
