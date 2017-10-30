@@ -2,6 +2,7 @@ from tkinter import Tk, Canvas, Label, N, S, E, W
 from Views.BlackButton import BlackButton
 from Views.BlueButton import BlueButton
 from Views.RedButton import RedButton
+from Views.GreenButton import GreenButton
 class MainView(Tk):
 
     class Constants:
@@ -46,6 +47,9 @@ class MainView(Tk):
 
         self.__red_button = RedButton(self)
         self.__red_button.grid(row = 2, column = 3, sticky = self.Constants.center)
+
+        self.__green_button = GreenButton(self)
+        self.__green_button.grid(row = 2, column = 4, sticky = self.Constants.center)
 
 
 
