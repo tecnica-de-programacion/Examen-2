@@ -28,12 +28,11 @@ class MainView(Tk):
         self.bind("<space>", self.clean)
 
     def __configure_grid(self):
-        self.grid_rowconfigure(0, weight = True)
-        self.grid_columnconfigure(0, weight = True)
-        self.grid_rowconfigure(1, minsize = self.Constants.height - 600, weight = True)
+        self.grid_rowconfigure(0, weight=True)
+        self.grid_rowconfigure(1, minsize = self.Constants.height - 600, weight=True)
 
-        for column_index in range(1, 4):
-            self.grid_columnconfigure(column_index, minsize = self.Constants.width / 4, weight = True)
+        for column_index in range(0, 4):
+            self.grid_columnconfigure(column_index, minsize=self.Constants.width / 4, weight=True)
 
     def __configure_ui(self):
         self.__canvas = Canvas(self, width = self.Constants.width, height = self.Constants.height, bg = 'gray')

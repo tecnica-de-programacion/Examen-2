@@ -21,8 +21,8 @@ class ColorButton(Label):
 
         self.bind(self.Events.click, self.change_color)
 
-    def position(self, row, column, columnspan = 1):
-        self.grid(row = row, column = column, columnspan = columnspan, sticky = self.Constants.center)
+    def position(self, row, column):
+        self.grid(row = row, column = column, sticky = self.Constants.center)
 
     def change_color(self, event):
         if self.__click_handler is None: return
