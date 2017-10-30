@@ -1,4 +1,5 @@
 from tkinter import Tk, Canvas, PhotoImage, Label, Button, N, S, E, W
+from Views.PokemonButton import PokemonButton
 
 
 class MainView(Tk):
@@ -23,10 +24,8 @@ class MainView(Tk):
         def size(cls):
             return '{}x{}'.format(cls.width,cls.height)
 
-    def __init__(self, eraser_handler = None, color_handler = None):
+    def __init__(self):
         super().__init__()
-        self.__eraser_handler = eraser_handler
-        self.__color_handler = color_handler
         self.__dot = None
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
@@ -36,11 +35,8 @@ class MainView(Tk):
         self.__configure_UI()
 
     def __configure_grid(self):
-        self.grid_rowconfigure(0, weight=True)
-        self.grid_rowconfigure(1, weight=True)
-        self.grid_rowconfigure(2, weight=True)
-        self.grid_rowconfigure(3, weight=True)
-        self.grid_rowconfigure(4, weight=True)
+        for row in range(0,5):
+            self.grid_rowconfigure(row, weight=True)
         self.grid_columnconfigure(0, weight=True, minsize=self.Constants.canvas_width)
         self.grid_columnconfigure(1, weight=True, minsize=self.Constants.pokemon_width)
 
@@ -52,37 +48,20 @@ class MainView(Tk):
         self.__title_image = PhotoImage(file=self.Constants.title_file)
         self.__title_label = Label(image=self.__title_image)
         self.__title_label.grid(row=0, column=0, columnspan=775, sticky=self.Constants.center)
-        self.__title_label.bind(self.Constants.color_event, self.__did_tap_color_change)
 
-        self.__black_image = PhotoImage(file=self.Constants.black_file)
-        self.__black_button = Button(image = self.__black_image)
-        self.__black_button.grid(row=1, column=1, sticky=self.Constants.center)
-        self.__black_button.bind(self.Constants.color_event, self.__did_tap_color_change)
-
-        self.__blue_image = PhotoImage(file=self.Constants.blue_file)
-        self.__blue_button = Button(image=self.__blue_image)
-        self.__blue_button.grid(row=2, column=1, sticky=self.Constants.center)
-        self.__blue_button.bind(self.Constants.color_event, self.__did_tap_color_change)
-
-        self.__green_image = PhotoImage(file=self.Constants.green_file)
-        self.__green_button = Button(image=self.__green_image)
-        self.__green_button.grid(row=3, column=1, sticky=self.Constants.center)
-        self.__green_button.bind(self.Constants.color_event, self.__did_tap_color_change)
-
-        self.__red_image = PhotoImage(file=self.Constants.red_file)
-        self.__red_button = Button(image=self.__red_image)
-        self.__red_button.grid(row=4, column=1, sticky=self.Constants.center)
-        self.__red_button.bind(self.Constants.color_event, self.__did_tap_color_change(self.Constants.color_event, "blue"))
-
-    def __did_tap_color_change(self, event, color):
-        if self.__color_handler is None:
-            return
+        self.__black_button = PokemonButton(self, self.Constants.black_file, "black", 1, 1, tap_color_handler=self.change_color)
+        self.__blue_button = PokemonButton(self, self.Constants.blue_file, "blue", 1, 2, tap_color_handler=self.change_color)
+        self.__green_button = PokemonButton(self, self.Constants.green_file, "green", 1, 3, tap_color_handler=self.change_color)
+        self.__red_button = PokemonButton(self, self.Constants.red_file, "red", 1, 4, tap_color_handler=self.change_color)
 
     def update_dot(self, x_value, y_value):
         self.__dot = self.__canvas.create_line(x_value-1, y_value-1, x_value, y_value, fill = self.Constants.color)
 
     def erase_window(self):
         self.__canvas.create_rectangle(0, 0, 600, 500, fill=self.Constants.canvas_color)
+
+    def change_color(self, new_color):
+        self.Constants.color = new_color
 
 
 

@@ -1,30 +1,20 @@
-from tkinter import Label, PhotoImage
+from tkinter import Button, PhotoImage
 
 
-class PokemonButton(Label):
+class PokemonButton():
 
-    class Constants:
-        black_file = "Assets/black.ppm"
-        blue_file = "Assets/blue.ppm"
-        green_file = "Assets/green.ppm"
-        red_file = "Assets/red.ppm"
-        event = "<Button-1>"
-
-    def __init__(self, master, tap_color_handler = None):
-        super().__init__(master)
+    def __init__(self, master, photo_file, color, column, row, tap_color_handler=None):
+        self.__master = master
         self.__tap_handler = tap_color_handler
-        self.__state = False
-        self.__black_image = PhotoImage(file = self.Constants.black_file)
-        self.__blue_image = PhotoImage(file = self.Constants.blue_file)
-        self.__green_image = PhotoImage(file = self.Constants.green_file)
-        self.__red_image = PhotoImage(file = self.Constants.red_file)
-        self.bind(self.Constants.event, self.__toggle)
-        self.__set_images()
+        self.__photo_file = photo_file
+        self.__color = color
+        self.__column = column
+        self.__row = row
 
-    def __toggle(self, event):
-        return
+        self.__image = PhotoImage(file=self.__photo_file)
+        self.__button = Button(self.__master, image=self.__image)
+        self.__button.grid(row=self.__row, column=self.__column)
+        self.__button.bind("<Button-1>", self.__did_tap_change)
 
-
-    def __set_images(self):
-        self.configure(image = image)
-        self.image = image
+    def __did_tap_change(self, event):
+        self.__tap_handler(self.__color)
