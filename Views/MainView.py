@@ -29,14 +29,14 @@ class MainView(Tk):
             self.__positions(value_x, value_y)
 
         if value_x < self.Constants.before_x:
-            self.update_line_x(self.Constants.before_x, value_y, value_x, value_y+self.Constants.bar_offset)
+            self.update_line_x(self.Constants.before_x, value_y, value_x, value_y)
         elif value_x > self.Constants.before_x:
-            self.update_line_x(value_x, value_y, self.Constants.before_x, value_y+self.Constants.bar_offset)
+            self.update_line_x(value_x, value_y, self.Constants.before_x, value_y)
 
         if value_y < self.Constants.before_y:
-            self.update_line_y(value_x, value_y, value_x+self.Constants.bar_offset, self.Constants.before_y)
+            self.update_line_y(value_x, value_y, value_x, self.Constants.before_y)
         elif value_y > self.Constants.before_y:
-            self.update_line_y(value_x, self.Constants.before_y, value_x+self.Constants.bar_offset, value_y)
+            self.update_line_y(value_x, self.Constants.before_y, value_x, value_y)
 
         self.__positions(value_x, value_y)
 
@@ -45,8 +45,8 @@ class MainView(Tk):
         self.Constants.before_y = value_y
 
     def update_line_x(self, x1, y1, x2, y2):
-        self.__line_x = self.__canvas.create_rectangle(x1,y1,x2,y2, fill="red")
+        self.__line_x = self.__canvas.create_line(x1,y1,x2,y2, fill="red")
 
     def update_line_y(self, x1, y1, x2, y2):
-        self.__line_y = self.__canvas.create_rectangle(x1,y1,x2,y2, fill="red")
+        self.__line_y = self.__canvas.create_line(x1,y1,x2,y2, fill="red")
 

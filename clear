@@ -1,0 +1,29 @@
+[33mcommit 8ae99fe38d4678e696bf862f19fcb761d7cea7ae[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Samuel <samuel.rkz12@gmail.com>
+Date:   Sun Oct 29 18:58:27 2017 -0600
+
+    Poder dibujar dentro de un area
+
+[33mcommit 8e8c07d97c219afee3ae2e34d8a0553a54066f05[m
+Author: Samuel <samuel.rkz12@gmail.com>
+Date:   Sun Oct 29 18:20:14 2017 -0600
+
+    Pantalla de escritura
+
+[33mcommit 0f0609660d7ace7b92bb70bee295483069577939[m
+Author: Samuel <samuel.rkz12@gmail.com>
+Date:   Sat Oct 28 23:07:16 2017 -0500
+
+    Pantalla de arranque
+
+[33mcommit ab4ede1598d10e28be3df1994f1b93111b32d073[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Miguelo Ruiz <red2000ace@gmail.com>
+Date:   Fri Oct 27 08:16:28 2017 -0500
+
+    Added Arduino files
+
+[33mcommit bb51b759850b5888b092f8befad2e8b30e6ca05e[m
+Author: Miguelo Ruiz <red2000ace@gmail.com>
+Date:   Fri Oct 27 08:15:14 2017 -0500
+
+    first commit
