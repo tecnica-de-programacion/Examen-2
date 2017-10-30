@@ -17,6 +17,9 @@ class MainView(Tk):
         def size(cls):
             return '{}x{}'.format(cls.window_width, cls.window_height)
 
+    class Events:
+        space_bar = "<space>"
+
     def __init__(self):
         super().__init__()
         self.title(self.Constants.title)
@@ -26,6 +29,8 @@ class MainView(Tk):
 
         self.__configure_ui()
         self.__configure_grid()
+
+        self.bind(self.Events.space_bar, self.__clear_board)
 
     def __configure_ui(self):
         self.__board = DrawBoard(self, self.Constants.board_height, self.Constants.board_width)
@@ -43,3 +48,7 @@ class MainView(Tk):
             
     def create_line(self, coordinate):
         self.__board.create_line(coordinate, fill = self.__keypad.get_color)
+
+    def __clear_board(self, event):
+        for i in self.__board.find_all():
+            self.__board.delete(i)
