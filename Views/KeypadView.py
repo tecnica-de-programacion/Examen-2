@@ -6,8 +6,8 @@ class KeypadView():
         self.__color = '#000000'
 
         button_black = ColorButton(master, "#000000", "Black", action = self.__change_colors)
-        button_red = ColorButton(master, "#ff0000", "Red", action=self.__change_colors)
-        button_green = ColorButton(master, "#33cc33", "Green", action=self.__change_colors)
+        button_red = ColorButton(master, "#ff0000", "Red", action = self.__change_colors)
+        button_green = ColorButton(master, "#33cc33", "Green", action = self.__change_colors)
         button_blue = ColorButton(master, "#0000ff","Blue", action = self.__change_colors)
 
         button_black.position(2, 0)
