@@ -1,5 +1,6 @@
 from tkinter import Tk, Canvas, PhotoImage, Label, Button, N, S, E, W
 from Views.PokemonButton import PokemonButton
+from Models.PositionManager import PositionManager
 
 
 class MainView(Tk):
@@ -26,7 +27,7 @@ class MainView(Tk):
 
     def __init__(self):
         super().__init__()
-        self.__dot = None
+        self.__position = PositionManager()
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
         self.maxsize(width=self.Constants.width, height=self.Constants.height)
@@ -54,10 +55,15 @@ class MainView(Tk):
         self.__green_button = PokemonButton(self, self.Constants.green_file, "green", 1, 3, tap_color_handler=self.change_color)
         self.__red_button = PokemonButton(self, self.Constants.red_file, "red", 1, 4, tap_color_handler=self.change_color)
 
-    def update_dot(self, x_value, y_value):
-        self.__dot = self.__canvas.create_line(x_value-1, y_value-1, x_value, y_value, fill = self.Constants.color)
+    def update_line(self, second_x, second_y):
+        first_x = self.__position.get_position_x()
+        first_y = self.__position.get_position_y()
+        old_cords = [(first_x, first_y)]
+        new_cords = [(second_x, second_y)]
+        self.__canvas.create_line(old_cords, new_cords, fill=self.Constants.color)
+        self.__position.set_position(second_x, second_y)
 
-    def erase_window(self):
+    def clear_window(self):
         self.__canvas.create_rectangle(0, 0, 600, 500, fill=self.Constants.canvas_color)
 
     def change_color(self, new_color):
