@@ -87,7 +87,6 @@ class MainView(Tk):
         else:
             self.__coordinates.append(x)
             self.__coordinates.append(y)
-
         self.bind(self.Constants.event_space, self.__did_space_tap)
 
     def clean_screen(self):
