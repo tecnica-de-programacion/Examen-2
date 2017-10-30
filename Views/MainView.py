@@ -1,6 +1,7 @@
 from tkinter import Tk, Canvas, Label, N, S, E, W
 from Views.BlackButton import BlackButton
 from Views.BlueButton import BlueButton
+from Views.RedButton import RedButton
 class MainView(Tk):
 
     class Constants:
@@ -10,8 +11,8 @@ class MainView(Tk):
         canvas_width = 600
         center = N + S + E + W
 
-        screen_height = 1000
-        screen_width = 1000
+        screen_height = 10000
+        screen_width = 10000
 
         horizontal_position = 0
         vertical_position = 0
@@ -42,6 +43,9 @@ class MainView(Tk):
 
         self.__blue_button = BlueButton(self)
         self.__blue_button.grid(row = 2, column = 1, sticky = self.Constants.center)
+
+        self.__red_button = RedButton(self)
+        self.__red_button.grid(row = 2, column = 3, sticky = self.Constants.center)
 
 
 
