@@ -24,7 +24,7 @@ class MainView(Tk):
 
     def __init__(self):
         super().__init__()
-        self.__color = "#FF0000"
+        self.__color = "#000000"
 
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
