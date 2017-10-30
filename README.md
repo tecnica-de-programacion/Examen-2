@@ -3,9 +3,9 @@ MARTÍNEZ SANTIAGO RICARDO SAID - Examen 2 - Pizarra Magica
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
 ## Nota
+LA LINEA SE SALE DEL AREA DE TRABAJO, AUNQUE CUANDO LLEGA A UNA ESQUINA SE DETIENE. POR OTRA PARTE, LOS VALORES NO SON MUY FIJOS, DECIDÍ HACER UNA LISTA DONDE ALMACENADA LOS VALORES Y CALCULABA SU PROMEDIO PERO NO ME SALIA LA FUNCIÓN POR LO QUE DECIDÍ DEJARLO ASÍ.
 
 ## Camputas de funcionameinto
-![alt text](ReadmeAssets/FOTO1)
-![alt text](ReadmeAssets/FOTO2 )
+
 
 ## Gif de fucnionamiento
