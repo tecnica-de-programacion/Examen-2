@@ -10,4 +10,4 @@ EL programa como tal no tiene algún secreto para su funcionamiento, traté de man
 ![alt text](ReadmeAssets/working_program_2.JPG "Capture 2")
 
 ## Gif de fucnionamiento
-![alt text](ReadmeAssets/program_interaction.jpg "Capture 1")
+![alt text](ReadmeAssets/program_interaction.gif "Program gif")
