@@ -1,5 +1,6 @@
 from tkinter import Tk, Canvas, Label, N, S, E, W
 from Views.BlackButton import BlackButton
+from Views.BlueButton import BlueButton
 class MainView(Tk):
 
     class Constants:
@@ -37,7 +38,12 @@ class MainView(Tk):
         self.__canvas.grid(row = 1 , column = 2, sticky = self.Constants.center)
 
         self.__black_button = BlackButton(self)
-        self.__black_button.grid(row = 2, column = 3, sticky = self.Constants.center)
+        self.__black_button.grid(row = 2, column = 0, sticky = self.Constants.center)
+
+        self.__blue_button = BlueButton(self)
+        self.__blue_button.grid(row = 2, column = 1, sticky = self.Constants.center)
+
+
 
     def drawing_line(self, horizontal_position, vertical_position):
         print("Horizontal: ", horizontal_position, "Vertical: ", vertical_position)
