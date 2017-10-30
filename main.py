@@ -9,10 +9,11 @@ class MainApp():
         close_event = "WM_DELETE_WINDOW"
 
     def __init__(self):
-        for port in list_ports.comports(include_links=True):
+        for port in list_ports.comports(include_links = True):
             print(port.device, port.name, port.description)
 
-        self.__master = MainView()
+        self.__master = MainView(tap_color_handler = self.__did_color_tapped)
+
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.__update_clock()
@@ -30,6 +31,8 @@ class MainApp():
         self.__master.drawing_line(position_value_horizontal, position_value_vertical)
         self.__master.Constants.positions(position_value_horizontal,position_value_vertical)
 
+    def __did_color_tapped(self, tapped_button):
+        pass
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
