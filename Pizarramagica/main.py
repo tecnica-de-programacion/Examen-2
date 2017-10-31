@@ -1,5 +1,4 @@
 from Views.MainView import MainView
-from tkinter import PhotoImage , Label
 import serial
 from serial.tools import list_ports
 
@@ -16,7 +15,6 @@ class MainApp():
         self.__master = MainView()
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
-
         self.__update_clock()
 
     def run(self):
@@ -38,6 +36,9 @@ class MainApp():
     def __on_closing(self):
         self.__arduino.close()
         self.__master.destroy()
+
+    def __did_button_tap(self,color):
+        self.__master.ChangeColor.line_color=color
 
 if __name__ == "__main__":
     app = MainApp()
