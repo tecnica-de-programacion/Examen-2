@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, N, S, E, W,TOP
+from tkinter import Tk, Canvas, N, S, E, W,TOP, RIGHT,LEFT, Button, Label
 
 class MainView(Tk):
     class Constants:
@@ -10,7 +10,6 @@ class MainView(Tk):
         center = N + S + E + W
         window_color = "gray"
         canvas_color = "white"
-        font = ("Comicsand",14)
         x_position = 0
         y_position = 500
         x_new = 0
@@ -36,6 +35,21 @@ class MainView(Tk):
         #borrador
         self.bind('<space>', self.__erase)
 
+        #BOTONES
+        self.__bottom_space = Label(self, text=" CLEAN THE CANVAS WITH SPACE BUTTON ;)", bg="beige")
+        self.__bottom_space.config(font=("Comic Sans MS", 20))
+        self.__bottom_space.pack()
+
+        self.__black_pencil = Button(self, text="Black", bg="black", fg="white", command=self.black, font=("Comic Sans MS", 20))
+        self.__black_pencil.pack(side = RIGHT)
+
+        self.__red_pencil = Button(self, text="Red", bg="red", fg="white", command=self.red, font=("Comic Sans MS", 20))
+        self.__green_pencil = Button(self, text="Green", fg="white", bg="green", command=self.green, font=("Comic Sans MS", 20))
+        self.__blue_pencil = Button(self, text="Blue", bg="blue", fg="white", command=self.blue, font=("Comic Sans MS", 20))
+
+        self.__red_pencil.pack(side =RIGHT )
+        self.__blue_pencil.pack(side = LEFT)
+        self.__green_pencil.pack(side = LEFT)
 
     def space_drawing(self,width,height):
         self.__board = Canvas(self, width=width, height=height, bg=self.Constants.canvas_color)
@@ -49,5 +63,15 @@ class MainView(Tk):
     def __erase(self, event):
         self.__board.delete("all")
 
+    def black(self):
+        self.Constants.color_default = "black"
 
+    def red(self):
+        self.Constants.color_default = "red"
+
+    def green(self):
+        self.Constants.color_default = "green"
+
+    def blue(self):
+        self.Constants.color_default = "blue"
 

@@ -38,6 +38,7 @@ class MainApp():
         self.__arduino.close()
         self.__master.destroy()
 
+
 if __name__ == "__main__":
     app = MainApp()
     app.run()
