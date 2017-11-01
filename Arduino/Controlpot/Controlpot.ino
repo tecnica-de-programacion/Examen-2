@@ -24,7 +24,7 @@ void sendDataX( int Xvalue) {
   Serial.print(',');
   }
 void sendDataY(int Yvalue) {
-  mapValueY = map(Yvalue,0,1023,4,494);
+  mapValueY = map(Yvalue,0,1023,4,498);
   Serial.print(Yvalue);
   Serial.print(',');
   Serial.println(mapValueY);
