@@ -10,9 +10,9 @@ class MainApp():
 
 
     def __init__(self):
-        for port in list_ports.comports(include_links=True):
+        for port in list_ports.comports(include_links = True):
             print(port.device, port.name, port.description)
-        self.__master = MainView(tap_button_handler=self.__did_button_tap,tap_space_handler=self.__did_space_tap)
+        self.__master = MainView(tap_button_handler = self.__did_button_tap, tap_space_handler = self.__did_space_tap)
         self.__arduino = serial.Serial(self.Constants.port, self.Constants.baud)
         self.__master.protocol(self.Constants.close_event, self.__on_closing)
         self.__update_clock()
@@ -35,7 +35,7 @@ class MainApp():
     def __update_clock(self):
         data = self.__arduino.readline().decode()
         self.__handle_data(data)
-        self.__master.after(5, self.__update_clock)
+        self.__master.after(1, self.__update_clock)
 
 
     def __on_closing(self):
