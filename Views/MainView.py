@@ -1,5 +1,4 @@
-from tkinter import Tk, Canvas, Label, N, S, E, W, Frame, Button,TOP
-from Models.Pencil import Pencil
+from tkinter import Tk, Canvas, N, S, E, W,TOP
 
 class MainView(Tk):
     class Constants:
@@ -11,7 +10,12 @@ class MainView(Tk):
         center = N + S + E + W
         window_color = "gray"
         canvas_color = "white"
-        font = ""
+        font = ("Comicsand",14)
+        x_position = 0
+        y_position = 500
+        x_new = 0
+        y_new = 500
+        color = "black"
 
         @classmethod
         def size(cls):
@@ -20,6 +24,7 @@ class MainView(Tk):
 
     def __init__(self):
         super().__init__()
+
         self.title(self.Constants.title)
         self.geometry(self.Constants.size())
         self.configure(bg = self.Constants.window_color)
@@ -33,3 +38,9 @@ class MainView(Tk):
     def space_drawing(self,width,height):
         self.__board = Canvas(self, width=width, height=height, bg=self.Constants.canvas_color)
         self.__board.pack(side=TOP)
+
+    def set_pencil(self, horizontal, vertical):
+        self.__line = self.__board.create_line(self.Constants.x_new, self.Constants.y_new, horizontal, self.Constants.y_position- vertical, fill=self.Constants.color)
+        self.Constants.x_new = horizontal
+        self.Constants.y_new = self.Constants.y_position - vertical
+
