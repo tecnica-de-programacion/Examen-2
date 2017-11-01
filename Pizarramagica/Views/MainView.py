@@ -9,6 +9,8 @@ class MainView(Tk):
         event_space = '<space>'
         heigthC = 500
         widthC = 600
+        widthP = 320
+        widthPs = 288
         widthPencil = 3
         bg = '#FFFFFF'
         board_bg = '#006400'
@@ -26,8 +28,9 @@ class MainView(Tk):
         Blue_button = "assets/blueB.png"
         Green_button = "assets/greenB.png"
         Red_button = "assets/redB.png"
-
         My_board = "assets/pi.png"
+        alone_pig = "assets/puerco.png"
+        pigs = "assets/puercos.png"
 
     class Positions:
         x_canv_and_backg = 100
@@ -36,7 +39,10 @@ class MainView(Tk):
         y_canv_redB_blackB = 30
         y_blue_gren = 400
         x_red_green = 710
-
+        x_pig = 5
+        x_pigs=550
+        y_pig = 600
+        y_pigs = 560
 
     class NewPencil:
         pencil_color = '#000000'
@@ -61,21 +67,29 @@ class MainView(Tk):
         self.__lienzo = PhotoImage(file = self.Images.My_board)
         self.__board = BackGround(self, self.Positions.x_canv_and_backg, self.Positions.y_backg, image = self.__lienzo, width = self.Constants.widthC)
 
-
         self.__canvas = Canvas(self, width = self.Constants.widthC , height = self.Constants.heigthC, bg = self.Constants.board_bg)
         self.__canvas.place( x = self.Positions.x_canv_and_backg, y = self.Positions.y_canv_redB_blackB)
 
+        self.__puerco = PhotoImage(file=self.Images.alone_pig)
+        self.__pig= BackGround(self, self.Positions.x_pig, self.Positions.y_pig, image=self.__puerco,
+                                  width=self.Constants.widthP)
+
+        self.__puercos = PhotoImage(file=self.Images.pigs)
+        self.__pigs = BackGround(self, self.Positions.x_pigs, self.Positions.y_pigs, image=self.__puercos,
+                                width=self.Constants.widthPs)
+
+
         self.__blackBi = PhotoImage(file = self.Images.Black_button)
-        self.__black_button = ChangeColorButton(self, self.Positions.x_black_blue, self.Positions.y_canv_redB_blackB, self.Constants.Black,self.__blackBi,action = self.__did_button_tap,bg=self.Constants.bg)
+        self.__black_button = ChangeColorButton(self, self.Positions.x_black_blue, self.Positions.y_canv_redB_blackB, self.Constants.Black,self.__blackBi,action = self.__did_button_tap)
 
         self.__blueBi = PhotoImage(file = self.Images.Blue_button)
-        self.__blue_button = ChangeColorButton(self, self.Positions.x_black_blue, self.Positions.y_blue_gren, self.Constants.Blue, self.__blueBi,action = self.__did_button_tap, bg=self.Constants.bg)
+        self.__blue_button = ChangeColorButton(self, self.Positions.x_black_blue, self.Positions.y_blue_gren, self.Constants.Blue, self.__blueBi,action = self.__did_button_tap)
 
         self.__redBi = PhotoImage(file = self.Images.Red_button)
-        self.__red_button = ChangeColorButton(self, self.Positions.x_red_green, self.Positions.y_canv_redB_blackB, self.Constants.Red, self.__redBi,action = self.__did_button_tap, bg=self.Constants.bg)
+        self.__red_button = ChangeColorButton(self, self.Positions.x_red_green, self.Positions.y_canv_redB_blackB, self.Constants.Red, self.__redBi,action = self.__did_button_tap)
 
         self.__greenBi = PhotoImage(file = self.Images.Green_button)
-        self.__green_button = ChangeColorButton(self, self.Positions.x_red_green, self.Positions.y_blue_gren, self.Constants.Green, self.__greenBi,action = self.__did_button_tap, bg=self.Constants.bg)
+        self.__green_button = ChangeColorButton(self, self.Positions.x_red_green, self.Positions.y_blue_gren, self.Constants.Green, self.__greenBi,action = self.__did_button_tap)
 
     def __did_button_tap(self, color):
         if self.__tap_button_handler is None: return
