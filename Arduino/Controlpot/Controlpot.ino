@@ -17,14 +17,14 @@ void loop(){
   delay(100);
 }
 void sendDataX( int Xvalue) {
-  mapValueX = map(Xvalue,0,1023,0,600);
+  mapValueX = map(Xvalue,0,1023,2,598);
   Serial.print(Xvalue);
   Serial.print(',');
   Serial.print(mapValueX);
   Serial.print(',');
   }
 void sendDataY(int Yvalue) {
-  mapValueY = map(Yvalue,0,1023,0,500);
+  mapValueY = map(Yvalue,0,1023,2,498);
   Serial.print(Yvalue);
   Serial.print(',');
   Serial.println(mapValueY);
