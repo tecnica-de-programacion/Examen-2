@@ -6,7 +6,7 @@ Gustavo Santos Nunez - Examen 2 - Pizarra Magica
 El programa funciona correctamente!
 
 ## Camputas de funcionameinto
-![alt text](ReadmeAssets/ interfaz.png "Interfaz"),
+![alt text](ReadmeAssets/ interfaz.png "interfaz"),
 ![alt text](ReadmeAssets/Running.jpg "Running")
 
 
