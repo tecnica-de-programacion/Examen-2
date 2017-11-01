@@ -1,6 +1,6 @@
 Gustavo Santos Nunez - Examen 2 - Pizarra Magica
 ======
-![alt text](ReadmeAssets/Funcionando.gif "Examen Bob")
+![alt text](ReadmeAssets/Red.gif "Red")
 
 ## Nota
 El programa funciona correctamente!
