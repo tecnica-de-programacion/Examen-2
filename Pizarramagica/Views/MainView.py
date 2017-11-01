@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, PhotoImage
+from tkinter import Tk, Canvas, PhotoImage,ALL
 from Views.Buttons import ChangeColorButton
 from Views.Labels import BackGround
 class MainView(Tk):
@@ -13,7 +13,6 @@ class MainView(Tk):
         Black = '#000000'
         Green = '#00BB00'
         Blue = '#0000BB'
-        event_space= '<space>'
 
         @classmethod
         def size(cls):
@@ -43,7 +42,7 @@ class MainView(Tk):
 
     def __interfaz_configure(self):
 
-        #self.__line = None
+        self.__line = None
 
         self.__fondo = PhotoImage(file = self.Images.My_board)
 
@@ -69,8 +68,8 @@ class MainView(Tk):
         self.__tap_button_handler(color)
 
     def __did_space_tap(self,space):
-        if self.__tap_button_handler is None: return
-        self.__tap_button_handler()
+        if self.__tap_space_handler is None: return
+        self.__tap_space_handler()
 
 
 
@@ -87,7 +86,6 @@ class MainView(Tk):
         self.bind(self.Constants.event_space, self.__did_space_tap)
 
     def clean_screen(self):
-        #self.__canvas.delete(ALL)
-        self.__interfaz_configure(self)
+        self.__canvas.delete(self,ALL)
 
 
