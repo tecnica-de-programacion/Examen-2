@@ -15,7 +15,7 @@ class MainView(Tk):
         y_position = 500
         x_new = 0
         y_new = 500
-        color = "black"
+        color_default = "black"
 
         @classmethod
         def size(cls):
@@ -33,6 +33,8 @@ class MainView(Tk):
 
         #coloca el pizarron
         self.space_drawing(self.Constants.width_canvas, self.Constants.height_canvas)
+        #borrador
+        self.bind('<space>', self.__erase)
 
 
     def space_drawing(self,width,height):
@@ -40,7 +42,12 @@ class MainView(Tk):
         self.__board.pack(side=TOP)
 
     def set_pencil(self, horizontal, vertical):
-        self.__line = self.__board.create_line(self.Constants.x_new, self.Constants.y_new, horizontal, self.Constants.y_position- vertical, fill=self.Constants.color)
+        self.__line = self.__board.create_line(self.Constants.x_new, self.Constants.y_new, horizontal, self.Constants.y_position- vertical, fill=self.Constants.color_default)
         self.Constants.x_new = horizontal
         self.Constants.y_new = self.Constants.y_position - vertical
+
+    def __erase(self, event):
+        self.__board.delete("all")
+
+
 
