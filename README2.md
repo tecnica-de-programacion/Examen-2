@@ -1,4 +1,4 @@
-TU-NOBRE-AQUI - Examen 2 - Pizarra Magica
+Hernandez Alvarez Antonio Ohtokani - Examen 2 - Pizarra Magica
 ======
 ![alt text](ReadmeAssets/examen-bob.gif "Examen Bob")
 
