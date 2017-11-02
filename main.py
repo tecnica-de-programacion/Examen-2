@@ -23,6 +23,16 @@ class ColorButton():
         if self.__action is None: return
         self.__action(self.__color)
 
+class Buttons():
+    def __init__(self, master, color_handler=None):
+        self.__master = master
+        self.__configure_buttons(color_handler)
+
+    def __configure_buttons(self, color_handler):
+        self.__label_button_color = LabelFrame(self.__master)
+        self.__label_button_color.grid(row=0, column=0)
+
+
 class MainView(Tk):
     class Constants:
         title = 'Pizarra mágica'
