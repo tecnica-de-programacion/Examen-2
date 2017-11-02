@@ -14,13 +14,12 @@ class DrawScreen(Canvas):
         self.__drawing_canvas.grid(row = 1, column = 0)
 
 class ColorButton():
-    def __init__(self, master, column, color, action=None):
+    def __init__(self, master, color, action=None):
         self.__master = master
-        self.__column = column
         self.__color = color
         self.__action = action
 
-    def __press_button_tap(self):
+    def __did_button_tap(self):
         if self.__action is None: return
         self.__action(self.__color)
 
@@ -78,9 +77,34 @@ class MainView(Tk):
 class MainApp:
     def __init__(self):
         self.__master = MainView()
+        self.__arduino = serial.Serial('COM1', 115200)
+        self.__master.protocol("WM_DELETE_WINDOW", self.__closing)
+        self.__update_coordinate()
+        self.__master.bind('<space>', self.__did_space_tap)
 
     def run(self):
         self.__master.mainloop()
+
+    def __did_button_tap(self, color):
+        self.__master.ChangeColor.line_color = color
+
+    def __did_space_tap(self):
+        self.__master.clean_screen()
+
+    def __update_coordinate(self):
+        coordinates = self.__arduino.readline().decode()
+        self.__handle_coordinate(coordinates)
+        self.__master.after(5, self.__update_coordinate)
+
+    def __handle_coordinate(self, coordinate):
+        clean_values = coordinate.strip(' \n\r').split(",")
+        coordinate_y = int(clean_values[0])
+        coordinate_x = int(clean_values[1])
+        self.__master.update_canvas(coordinate_x, coordinate_y)
+
+    def __closing(self):
+        self.__arduino.close()
+        self.__master.destroy()
 
 if __name__ == '__main__':
     app = MainApp()
